@@ -161,693 +161,100 @@ def record_attempt(
 
 
 # ==============================================================================
-# 2. MINI-LESSON TEACHER REPOSITORY (MCGRAW-HILL LESSON ALIGNED)
+# 2. TEACHER REPOSITORY: MCGRAW-HILL REVEAL MATH LESSONS
 # ==============================================================================
 MINI_LESSONS = {
-    "Unit 3: Place Value": {
-        "title": "Unit 3: Place Value & Number Relationships",
+    "Unit 2: Volume": {
+        "title": "Unit 2: Volume of Prisms & Composite Solids",
         "concept": """
-### 👩‍🏫 Lesson 3: Place Value & Decimal Power
-* **10-to-1 Relationship:** Each place value is **10 times** greater than the place to its right, and **1/10** of the place to its left.
-* **Tenths vs. Hundredths vs. Thousandths:**
-  * Tenths: $0.1$ or $\\frac{1}{10}$ (1st digit right of decimal)
-  * Hundredths: $0.01$ or $\\frac{1}{100}$ (2nd digit right of decimal)
-  * Thousandths: $0.001$ or $\\frac{1}{1,000}$ (3rd digit right of decimal)
-* **Rounding Decimals (Lesson 3-5):**
-  1. Find the place you want to round to.
-  2. Look at the digit directly to the right.
-  3. If that digit is **5 or greater**, round up! If it is **4 or less**, keep it the same.
+### 👩‍🏫 Unit 2: Volume Foundations
+* **What is Volume?** The space occupied by a 3-dimensional solid figure, measured in **cubic units**.
+* **Key Definitions (Lessons 2-1 to 2-4):**
+  * **Unit Cube:** A cube with edge lengths of $1$ unit (Volume $= 1\\text{ cubic unit}$).
+  * **Rectangular Prism:** A 3D solid with $6$ rectangular faces.
+  * **Composite / Compound Solid:** A solid made of two or more joined solids.
+  * **Formula:** An equation describing relationships between quantities ($V = l \\times w \\times h$ or $V = B \\times h$).
+* **Associative Property (Lesson 2-3):** 
+  $$(l \\times w) \\times h = l \\times (w \\times h)$$
+  Grouping factors differently does not change the total volume.
+* **Liquid Volume vs. Container Height (Lesson 2-5):**
+  When finding water volume in a pool or tank, use the **depth of the liquid**, NOT the height of the container wall!
         """,
         "example": """
-* **Word Form:** $44.259$ is read as *"forty-four and two hundred fifty-nine thousandths"*.
-* **Rounding:** In $2.755$, to round to the nearest hundredth, look at the thousandths digit ($5$). Since $5 \\ge 5$, it rounds up to **$2.76$**.
+* **Decomposing a Warehouse (Lesson 2-4):**
+  * Section A: $20\\text{ ft wide} \\times 25\\text{ ft deep} \\times 50\\text{ ft tall} = 25,000\\text{ cu ft}$
+  * Section B: $30\\text{ ft wide} \\times 50\\text{ ft deep} \\times 25\\text{ ft tall} = 37,500\\text{ cu ft}$
+  * Total Volume $= 25,000 + 37,500 = \\mathbf{62,500\\text{ cu ft}}$.
         """,
         "trap": (
-            "Don't confuse **Place** with **Value**! If a question asks for the"
-            " *place*, answer with the name (*thousandths*). If it asks for the"
-            " *value*, answer with the number (*0.009* or *9/1,000*)."
+            "Don't multiply the wall height by mistake when finding liquid"
+            " volume! Always verify whether the problem asks for the"
+            " container's capacity or the liquid's volume."
         ),
     },
-    "Chapter 12: Geometry": {
-        "title": "Unit 2 / Chapter 12: Volume of Compound Solids",
+    "Unit 3: Place Value and Number Relationships": {
+        "title": "Unit 3: Place Value and Number Relationships",
         "concept": """
-### 👩‍🏫 Lesson: How to Find Volume of L-Shaped Solids
-* **Formula:** $\\text{Volume} = \\text{Length} \\times \\text{Width} \\times \\text{Height}$ ($V = l \\times w \\times h$).
-* **Additive Volume Strategy:**
-  1. Split the irregular $L$-shape into two separate blocks: **Prism 1** and **Prism 2**.
-  2. Find the dimensions ($l, w, h$) of Prism 1 and multiply them.
-  3. Find the dimensions ($l, w, h$) of Prism 2 and multiply them.
-  4. **Add both volumes together** to get the total volume!
+### 👩‍🏫 Unit 3: Decimal Place Value & Powers of 10
+* **The 10-to-1 Relationship:**
+  * One step left $\\rightarrow$ **10 times greater** ($0.02$ is 10 times $0.002$).
+  * One step right $\\rightarrow$ **1/10 of** ($0.05$ is $1/10$ of $0.5$).
+* **Rounding Decimals (Lesson 3-5):**
+  1. Circle target place value digit.
+  2. Look at right-side neighbor: **5 or more rounds up**, **4 or less stays the same**.
         """,
-        "example": (
-            "If Prism 1 is $4 \\times 3 \\times 10 = 120$ cu in, and Prism 2"
-            " is $6 \\times 3 \\times 4 = 72$ cu in:\n$$\\text{Total Volume} ="
-            " 120 + 72 = 192 \\text{ cu in}$$\n"
-        ),
+        "example": """
+* Rounding $2.755$ to hundredths: Neighbor digit is $5 \\ge 5 \\rightarrow \\mathbf{2.76}$.
+* Word Form: $44.259 \\rightarrow$ *"forty-four and two hundred fifty-nine thousandths"*.
+        """,
         "trap": (
-            "Make sure you don't use the total width or height twice! When you"
-            " split the shape, break down the side that was cut."
+            "Place is the name (*thousandths*). Value is the numeric quantity"
+            " (*0.009* or *9/1,000*)."
         ),
     },
-    "Chapter 2: Multiply Whole Numbers": {
-        "title": "Chapter 2: Multi-Digit Multiplication",
-        "concept": """
-### 👩‍🏫 Lesson: Multi-Digit Multiplication
-* Break multi-digit numbers down by place value or use the standard algorithm:
-  1. Multiply by the ones digit.
-  2. Place a **0 placeholder** before multiplying by the tens digit.
-  3. Add both partial products together.
-        """,
+    "Unit 4: Add and Subtract Decimals": {
+        "title": "Unit 4: Addition and Subtraction of Decimals",
+        "concept": (
+            "Always line up the decimal points vertically so identical place"
+            " values align. Fill missing positions with placeholder zeros."
+        ),
+        "example": "$24.75 + 5.40 = 30.15$.",
+        "trap": "Never line up decimal numbers along the right edge!",
+    },
+    "Unit 5: Multiply Multi-Digit Whole Numbers": {
+        "title": "Unit 5: Multi-Digit Whole Number Multiplication",
+        "concept": (
+            "Multiply by the ones digit, then insert a 0 placeholder before"
+            " multiplying by the tens digit."
+        ),
+        "example": "$142 \\times 23 = 426 + 2,840 = 3,266$.",
+        "trap": "Remember the 0 placeholder on the second line!",
+    },
+    "Unit 6: Multiply Decimals": {
+        "title": "Unit 6: Multiplying Decimals",
+        "concept": (
+            "Multiply like whole numbers. Then count total decimal places in"
+            " both factors and move the decimal left in the product."
+        ),
         "example": (
-            "To multiply $142 \\times 23$:\n* $142 \\times 3 = 426$\n* $142"
-            " \\times 20 = 2,840$\n* $426 + 2,840 = 3,266$."
+            "$3.2$ (1 place) $\\times 0.4$ (1 place) $= 1.28$ (2 places)."
         ),
-        "trap": (
-            "Don't forget the zero placeholder when multiplying by the tens"
-            " digit!"
+        "trap": "Do not line up decimal points when multiplying!",
+    },
+    "Unit 7: Divide Whole Numbers": {
+        "title": "Unit 7: Dividing Whole Numbers",
+        "concept": (
+            "Divide, Multiply, Subtract, Bring down. State leftovers as"
+            " remainders (e.g., 31 R1)."
         ),
+        "example": "$125 \\div 4 = 31\\text{ R}1$.",
+        "trap": "The remainder must always be smaller than the divisor!",
     },
 }
 
 # ==============================================================================
-# 3. 3D VISUAL ENGINE & DECOMPOSITION GENERATOR
+# 3. HELPER ARRAYS & FUNCTIONS
 # ==============================================================================
-
-
-def draw_dim_line(ax, p1, p2, text, offset=(0, 0), ha="center", va="center"):
-  ax.plot(
-      [p1[0], p2[0]],
-      [p1[1], p2[1]],
-      color="#38bdf8",
-      lw=1.8,
-      marker="|",
-      markersize=8,
-      markeredgewidth=2,
-  )
-  mid_x = (p1[0] + p2[0]) / 2 + offset[0]
-  mid_y = (p1[1] + p2[1]) / 2 + offset[1]
-  bbox = dict(
-      boxstyle="round,pad=0.25",
-      facecolor="#0f172a",
-      edgecolor="#38bdf8",
-      lw=1.4,
-  )
-  ax.text(
-      mid_x,
-      mid_y,
-      text,
-      color="#f8fafc",
-      fontsize=10,
-      fontweight="bold",
-      ha=ha,
-      va=va,
-      bbox=bbox,
-  )
-
-
-def project_oblique(x, y, z, scale_d=0.55):
-  rad = math.radians(32)
-  px = x + z * scale_d * math.cos(rad)
-  py = y + z * scale_d * math.sin(rad)
-  return px, py
-
-
-def render_box(
-    ax,
-    x0,
-    y0,
-    z0,
-    lx,
-    ly,
-    lz,
-    col_front="#00a8cc",
-    col_top="#bbf2f6",
-    col_side="#006a8e",
-    label=None,
-):
-  edge_col = "#042f2e"
-  f_pts = [
-      project_oblique(x0, y0, z0),
-      project_oblique(x0 + lx, y0, z0),
-      project_oblique(x0 + lx, y0 + ly, z0),
-      project_oblique(x0, y0 + ly, z0),
-  ]
-  t_pts = [
-      project_oblique(x0, y0 + ly, z0),
-      project_oblique(x0 + lx, y0 + ly, z0),
-      project_oblique(x0 + lx, y0 + ly, z0 + lz),
-      project_oblique(x0, y0 + ly, z0 + lz),
-  ]
-  s_pts = [
-      project_oblique(x0 + lx, y0, z0),
-      project_oblique(x0 + lx, y0, z0 + lz),
-      project_oblique(x0 + lx, y0 + ly, z0 + lz),
-      project_oblique(x0 + lx, y0 + ly, z0),
-  ]
-
-  ax.add_patch(
-      patches.Polygon(
-          f_pts, closed=True, facecolor=col_front, edgecolor=edge_col, lw=1.8
-      )
-  )
-  ax.add_patch(
-      patches.Polygon(
-          t_pts, closed=True, facecolor=col_top, edgecolor=edge_col, lw=1.8
-      )
-  )
-  ax.add_patch(
-      patches.Polygon(
-          s_pts, closed=True, facecolor=col_side, edgecolor=edge_col, lw=1.8
-      )
-  )
-
-  if label:
-    cx = x0 + lx / 2
-    cy = y0 + ly / 2
-    px, py = project_oblique(cx, cy, z0)
-    ax.text(
-        px,
-        py,
-        label,
-        fontsize=24,
-        fontweight="bold",
-        color="white",
-        ha="center",
-        va="center",
-        alpha=0.9,
-    )
-
-  return f_pts + t_pts + s_pts
-
-
-def draw_compound_l_prism(ax, l1, h1, l2, h2, w):
-  col_front, col_top, col_side = "#00a8cc", "#bbf2f6", "#006a8e"
-  edge_col = "#042f2e"
-
-  front_poly = [
-      project_oblique(0, 0, 0),
-      project_oblique(l1 + l2, 0, 0),
-      project_oblique(l1 + l2, h2, 0),
-      project_oblique(l1, h2, 0),
-      project_oblique(l1, h1, 0),
-      project_oblique(0, h1, 0),
-  ]
-  ax.add_patch(
-      patches.Polygon(
-          front_poly,
-          closed=True,
-          facecolor=col_front,
-          edgecolor=edge_col,
-          lw=2.2,
-      )
-  )
-
-  top_tall = [
-      project_oblique(0, h1, 0),
-      project_oblique(l1, h1, 0),
-      project_oblique(l1, h1, w),
-      project_oblique(0, h1, w),
-  ]
-  top_step = [
-      project_oblique(l1, h2, 0),
-      project_oblique(l1 + l2, h2, 0),
-      project_oblique(l1 + l2, h2, w),
-      project_oblique(l1, h2, w),
-  ]
-  ax.add_patch(
-      patches.Polygon(
-          top_tall, closed=True, facecolor=col_top, edgecolor=edge_col, lw=2.2
-      )
-  )
-  ax.add_patch(
-      patches.Polygon(
-          top_step, closed=True, facecolor=col_top, edgecolor=edge_col, lw=2.2
-      )
-  )
-
-  side_right = [
-      project_oblique(l1 + l2, 0, 0),
-      project_oblique(l1 + l2, h2, 0),
-      project_oblique(l1 + l2, h2, w),
-      project_oblique(l1 + l2, 0, w),
-  ]
-  side_step_inner = [
-      project_oblique(l1, h2, 0),
-      project_oblique(l1, h1, 0),
-      project_oblique(l1, h1, w),
-      project_oblique(l1, h2, w),
-  ]
-  ax.add_patch(
-      patches.Polygon(
-          side_right, closed=True, facecolor=col_side, edgecolor=edge_col, lw=2.2
-      )
-  )
-  ax.add_patch(
-      patches.Polygon(
-          side_step_inner,
-          closed=True,
-          facecolor=col_side,
-          edgecolor=edge_col,
-          lw=2.0,
-      )
-  )
-
-  p1_h1, p2_h1 = project_oblique(-1.0, 0, 0), project_oblique(-1.0, h1, 0)
-  draw_dim_line(ax, p1_h1, p2_h1, f"{h1} in", offset=(-0.5, 0), ha="right")
-
-  p1_base, p2_base = project_oblique(0, -1.0, 0), project_oblique(
-      l1 + l2, -1.0, 0
-  )
-  draw_dim_line(
-      ax, p1_base, p2_base, f"{l1 + l2} in", offset=(0, -0.5), ha="center"
-  )
-
-  p1_top, p2_top = project_oblique(0, h1 + 1.0, 0), project_oblique(
-      l1, h1 + 1.0, 0
-  )
-  draw_dim_line(ax, p1_top, p2_top, f"{l1} in", offset=(0, 0.4), ha="center")
-
-  p1_h2, p2_h2 = project_oblique(l1 + l2 + 1.0, 0, 0), project_oblique(
-      l1 + l2 + 1.0, h2, 0
-  )
-  draw_dim_line(ax, p1_h2, p2_h2, f"{h2} in", offset=(0.5, 0), ha="left")
-
-  p1_depth = project_oblique(l1 + l2 + 0.6, -0.6, 0)
-  p2_depth = project_oblique(l1 + l2 + 0.6, -0.6, w)
-  draw_dim_line(
-      ax, p1_depth, p2_depth, f"{w} in", offset=(0.7, -0.2), ha="left"
-  )
-
-  all_pts = (
-      front_poly
-      + top_tall
-      + top_step
-      + side_right
-      + [p1_h1, p2_h1, p1_base, p2_base, p1_top, p2_top, p1_depth, p2_depth]
-  )
-  xs = [pt[0] for pt in all_pts]
-  ys = [pt[1] for pt in all_pts]
-  ax.set_xlim(min(xs) - 1.5, max(xs) + 1.5)
-  ax.set_ylim(min(ys) - 1.5, max(ys) + 1.5)
-  ax.axis("off")
-
-
-def draw_compound_l_breakdown(ax, l1, h1, l2, h2, w):
-  gap = 4.0
-  pts = []
-
-  pts += render_box(
-      ax,
-      0,
-      0,
-      0,
-      l1,
-      h1,
-      w,
-      col_front="#2563eb",
-      col_top="#93c5fd",
-      col_side="#1d4ed8",
-      label="1",
-  )
-  p_l1_b = project_oblique(0, -0.8, 0)
-  p_l1_e = project_oblique(l1, -0.8, 0)
-  draw_dim_line(ax, p_l1_b, p_l1_e, f"{l1} in", offset=(0, -0.4), ha="center")
-
-  p_h1_b = project_oblique(-0.8, 0, 0)
-  p_h1_e = project_oblique(-0.8, h1, 0)
-  draw_dim_line(ax, p_h1_b, p_h1_e, f"{h1} in", offset=(-0.4, 0), ha="right")
-
-  p_w1_b = project_oblique(l1 + 0.4, -0.4, 0)
-  p_w1_e = project_oblique(l1 + 0.4, -0.4, w)
-  draw_dim_line(ax, p_w1_b, p_w1_e, f"{w} in", offset=(0.5, -0.2), ha="left")
-
-  x2 = l1 + gap
-  pts += render_box(
-      ax,
-      x2,
-      0,
-      0,
-      l2,
-      h2,
-      w,
-      col_front="#059669",
-      col_top="#6ee7b7",
-      col_side="#047857",
-      label="2",
-  )
-  p_l2_b = project_oblique(x2, -0.8, 0)
-  p_l2_e = project_oblique(x2 + l2, -0.8, 0)
-  draw_dim_line(ax, p_l2_b, p_l2_e, f"{l2} in", offset=(0, -0.4), ha="center")
-
-  p_h2_b = project_oblique(x2 + l2 + 0.8, 0, 0)
-  p_h2_e = project_oblique(x2 + l2 + 0.8, h2, 0)
-  draw_dim_line(ax, p_h2_b, p_h2_e, f"{h2} in", offset=(0.5, 0), ha="left")
-
-  p_w2_b = project_oblique(x2 + l2 + 0.4, -0.4, 0)
-  p_w2_e = project_oblique(x2 + l2 + 0.4, -0.4, w)
-  draw_dim_line(ax, p_w2_b, p_w2_e, f"{w} in", offset=(0.5, -0.2), ha="left")
-
-  xs = [pt[0] for pt in pts]
-  ys = [pt[1] for pt in pts]
-  ax.set_xlim(min(xs) - 2.0, max(xs) + 2.0)
-  ax.set_ylim(min(ys) - 1.8, max(ys) + 1.8)
-  ax.axis("off")
-
-
-def draw_unit_cubes_compound(ax, l1, h1, l2, h2, w):
-  col_front, col_top, col_side = "#38bdf8", "#bae6fd", "#0284c7"
-  edge_col = "#0f172a"
-
-  occupied = set()
-  for x in range(l1):
-    for y in range(h1):
-      for z in range(w):
-        occupied.add((x, y, z))
-  for x in range(l1, l1 + l2):
-    for y in range(h2):
-      for z in range(w):
-        occupied.add((x, y, z))
-
-  sorted_cubes = sorted(list(occupied), key=lambda c: (-c[2], c[1], c[0]))
-  all_pts = []
-  for x, y, z in sorted_cubes:
-    if (x, y, z - 1) not in occupied:
-      f_pts = [
-          project_oblique(x, y, z),
-          project_oblique(x + 1, y, z),
-          project_oblique(x + 1, y + 1, z),
-          project_oblique(x, y + 1, z),
-      ]
-      ax.add_patch(
-          patches.Polygon(
-              f_pts,
-              closed=True,
-              facecolor=col_front,
-              edgecolor=edge_col,
-              lw=1.2,
-          )
-      )
-      all_pts.extend(f_pts)
-    if (x, y + 1, z) not in occupied:
-      t_pts = [
-          project_oblique(x, y + 1, z),
-          project_oblique(x + 1, y + 1, z),
-          project_oblique(x + 1, y + 1, z + 1),
-          project_oblique(x, y + 1, z + 1),
-      ]
-      ax.add_patch(
-          patches.Polygon(
-              t_pts, closed=True, facecolor=col_top, edgecolor=edge_col, lw=1.2
-          )
-      )
-      all_pts.extend(t_pts)
-    if (x + 1, y, z) not in occupied:
-      r_pts = [
-          project_oblique(x + 1, y, z),
-          project_oblique(x + 1, y, z + 1),
-          project_oblique(x + 1, y + 1, z + 1),
-          project_oblique(x + 1, y + 1, z),
-      ]
-      ax.add_patch(
-          patches.Polygon(
-              r_pts, closed=True, facecolor=col_side, edgecolor=edge_col, lw=1.2
-          )
-      )
-      all_pts.extend(r_pts)
-
-  xs = [pt[0] for pt in all_pts]
-  ys = [pt[1] for pt in all_pts]
-  ax.set_xlim(min(xs) - 1.0, max(xs) + 1.0)
-  ax.set_ylim(min(ys) - 1.0, max(ys) + 1.0)
-  ax.axis("off")
-
-
-def draw_unit_cubes_breakdown(ax, l1, h1, l2, h2, w):
-  edge_col = "#0f172a"
-  gap_x = 2
-  occupied = set()
-
-  for x in range(l1):
-    for y in range(h1):
-      for z in range(w):
-        occupied.add((x, y, z, 1))
-
-  for x in range(l1 + gap_x, l1 + gap_x + l2):
-    for y in range(h2):
-      for z in range(w):
-        occupied.add((x, y, z, 2))
-
-  sorted_cubes = sorted(list(occupied), key=lambda c: (-c[2], c[1], c[0]))
-  all_pts = []
-
-  for x, y, z, grp in sorted_cubes:
-    col_front = "#2563eb" if grp == 1 else "#059669"
-    col_top = "#93c5fd" if grp == 1 else "#6ee7b7"
-    col_side = "#1d4ed8" if grp == 1 else "#047857"
-
-    if not any(
-        c[0] == x and c[1] == y and c[2] == z - 1 and c[3] == grp
-        for c in occupied
-    ):
-      f_pts = [
-          project_oblique(x, y, z),
-          project_oblique(x + 1, y, z),
-          project_oblique(x + 1, y + 1, z),
-          project_oblique(x, y + 1, z),
-      ]
-      ax.add_patch(
-          patches.Polygon(
-              f_pts,
-              closed=True,
-              facecolor=col_front,
-              edgecolor=edge_col,
-              lw=1.2,
-          )
-      )
-      all_pts.extend(f_pts)
-
-    if not any(
-        c[0] == x and c[1] == y + 1 and c[2] == z and c[3] == grp
-        for c in occupied
-    ):
-      t_pts = [
-          project_oblique(x, y + 1, z),
-          project_oblique(x + 1, y + 1, z),
-          project_oblique(x + 1, y + 1, z + 1),
-          project_oblique(x, y + 1, z + 1),
-      ]
-      ax.add_patch(
-          patches.Polygon(
-              t_pts, closed=True, facecolor=col_top, edgecolor=edge_col, lw=1.2
-          )
-      )
-      all_pts.extend(t_pts)
-
-    if not any(
-        c[0] == x + 1 and c[1] == y and c[2] == z and c[3] == grp
-        for c in occupied
-    ):
-      r_pts = [
-          project_oblique(x + 1, y, z),
-          project_oblique(x + 1, y, z + 1),
-          project_oblique(x + 1, y + 1, z + 1),
-          project_oblique(x + 1, y + 1, z),
-      ]
-      ax.add_patch(
-          patches.Polygon(
-              r_pts, closed=True, facecolor=col_side, edgecolor=edge_col, lw=1.2
-          )
-      )
-      all_pts.extend(r_pts)
-
-  p1_lbl = project_oblique(l1 / 2, -0.6, 0)
-  ax.text(
-      p1_lbl[0],
-      p1_lbl[1],
-      f"Prism 1\n({l1 * h1 * w} cubes)",
-      color="#93c5fd",
-      fontsize=11,
-      fontweight="bold",
-      ha="center",
-  )
-  p2_lbl = project_oblique(l1 + gap_x + l2 / 2, -0.6, 0)
-  ax.text(
-      p2_lbl[0],
-      p2_lbl[1],
-      f"Prism 2\n({l2 * h2 * w} cubes)",
-      color="#6ee7b7",
-      fontsize=11,
-      fontweight="bold",
-      ha="center",
-  )
-
-  xs = [pt[0] for pt in all_pts]
-  ys = [pt[1] for pt in all_pts]
-  ax.set_xlim(min(xs) - 1.0, max(xs) + 1.0)
-  ax.set_ylim(min(ys) - 1.5, max(ys) + 1.0)
-  ax.axis("off")
-
-
-def draw_fraction_area(ax, num, den):
-  bar_width = 8.0
-  box_width = bar_width / den
-  for i in range(den):
-    color = "#2ecc71" if i < num else "#334155"
-    rect = patches.Rectangle(
-        (i * box_width, 0.5),
-        box_width,
-        1.8,
-        facecolor=color,
-        edgecolor="#f8fafc",
-        lw=2,
-    )
-    ax.add_patch(rect)
-
-  bbox = dict(
-      boxstyle="round,pad=0.3",
-      facecolor="#0f172a",
-      edgecolor="#38bdf8",
-      lw=1.2,
-  )
-  ax.text(
-      bar_width / 2,
-      -0.4,
-      f"Visual Model: {num}/{den}",
-      ha="center",
-      fontweight="bold",
-      fontsize=12,
-      color="#f8fafc",
-      bbox=bbox,
-  )
-  ax.set_xlim(-0.5, bar_width + 0.5)
-  ax.set_ylim(-0.9, 2.8)
-  ax.axis("off")
-
-
-def generate_diagram(diagram_type: str, params: dict) -> io.BytesIO:
-  fig, ax = plt.subplots(figsize=(6.5, 4.2), dpi=140)
-  if diagram_type == "compound_l_prism":
-    draw_compound_l_prism(
-        ax,
-        params["l1"],
-        params["h1"],
-        params["l2"],
-        params["h2"],
-        params["w"],
-    )
-  elif diagram_type == "compound_l_breakdown":
-    draw_compound_l_breakdown(
-        ax,
-        params["l1"],
-        params["h1"],
-        params["l2"],
-        params["h2"],
-        params["w"],
-    )
-  elif diagram_type == "unit_cubes_compound":
-    draw_unit_cubes_compound(
-        ax,
-        params["l1"],
-        params["h1"],
-        params["l2"],
-        params["h2"],
-        params["w"],
-    )
-  elif diagram_type == "unit_cubes_breakdown":
-    draw_unit_cubes_breakdown(
-        ax,
-        params["l1"],
-        params["h1"],
-        params["l2"],
-        params["h2"],
-        params["w"],
-    )
-  elif diagram_type == "fraction_bar":
-    draw_fraction_area(ax, params["num"], params["den"])
-
-  buf = io.BytesIO()
-  plt.tight_layout()
-  plt.savefig(buf, format="png", bbox_inches="tight", transparent=True)
-  buf.seek(0)
-  plt.close(fig)
-  return buf
-
-
-def helper_shuffle_options(correct_text, distractor_texts):
-  opts = [correct_text] + distractor_texts
-  random.shuffle(opts)
-  return opts
-
-
-def clean_math_string(s: str) -> str:
-  s = str(s).strip().lower()
-  s = s.replace(",", "")
-  s = re.sub(
-      r"\b(cubic\s+units?|cubic\s+inches?|cu\s+in|inches?|in|cubes?|meters?|m)\b",
-      "",
-      s,
-  )
-  s = s.strip()
-  return s
-
-
-def check_user_answer(user_input, q: dict) -> bool:
-  if q.get("input_type") == "multiselect":
-    correct_set = set(q.get("correct_answers", []))
-    user_set = set(user_input if isinstance(user_input, list) else [])
-    return correct_set == user_set
-
-  if q.get("input_type") == "multi_text":
-    if not isinstance(user_input, dict):
-      return False
-    for k, acc_list in q.get("accepted_answers_dict", {}).items():
-      val = clean_math_string(user_input.get(k, ""))
-      acc_cleaned = [clean_math_string(a) for a in acc_list]
-      if val not in acc_cleaned:
-        matched = False
-        try:
-          u_float = float(eval(val))
-          for a in acc_cleaned:
-            try:
-              if math.isclose(u_float, float(eval(a)), rel_tol=1e-4):
-                matched = True
-                break
-            except:
-              pass
-        except:
-          pass
-        if not matched:
-          return False
-    return True
-
-  if q.get("input_type") == "radio":
-    return user_input == q["answer"]
-
-  cleaned_user = clean_math_string(user_input)
-  accepted = [clean_math_string(ans) for ans in q.get("accepted_answers", [])]
-
-  if cleaned_user in accepted:
-    return True
-
-  try:
-    user_num = float(eval(cleaned_user))
-    for acc in accepted:
-      try:
-        acc_num = float(eval(acc))
-        if math.isclose(user_num, acc_num, rel_tol=1e-4):
-          return True
-      except:
-        pass
-  except:
-    pass
-
-  return False
-
-
-# ==============================================================================
-# 4. UNIT 3: PLACE VALUE GENERATORS (MCGRAW-HILL BENCHMARKS)
-# ==============================================================================
-
 ONES_WORDS = [
     "",
     "one",
@@ -895,7 +302,1006 @@ def number_to_word_2digit(n):
   return TENS_WORDS[t] + (f"-{ONES_WORDS[r]}" if r > 0 else "")
 
 
-# --- Item 7: Comparing digit values across two large numbers (Lesson 3-1) ---
+# ==============================================================================
+# 4. 3D VISUAL ENGINE & DIAGRAM GENERATORS (EXACT WAREHOUSE LABEL FIX)
+# ==============================================================================
+def project_oblique(x, y, z, scale_d=0.55):
+  rad = math.radians(32)
+  px = x + z * scale_d * math.cos(rad)
+  py = y + z * scale_d * math.sin(rad)
+  return px, py
+
+
+def render_box(
+    ax,
+    x0,
+    y0,
+    z0,
+    lx,
+    ly,
+    lz,
+    col_front="#00a8cc",
+    col_top="#bbf2f6",
+    col_side="#006a8e",
+    label=None,
+):
+  edge_col = "#042f2e"
+  f_pts = [
+      project_oblique(x0, y0, z0),
+      project_oblique(x0 + lx, y0, z0),
+      project_oblique(x0 + lx, y0 + ly, z0),
+      project_oblique(x0, y0 + ly, z0),
+  ]
+  t_pts = [
+      project_oblique(x0, y0 + ly, z0),
+      project_oblique(x0 + lx, y0 + ly, z0),
+      project_oblique(x0 + lx, y0 + ly, z0 + lz),
+      project_oblique(x0, y0 + ly, z0 + lz),
+  ]
+  s_pts = [
+      project_oblique(x0 + lx, y0, z0),
+      project_oblique(x0 + lx, y0, z0 + lz),
+      project_oblique(x0 + lx, y0 + ly, z0 + lz),
+      project_oblique(x0 + lx, y0 + ly, z0),
+  ]
+
+  ax.add_patch(
+      patches.Polygon(
+          f_pts, closed=True, facecolor=col_front, edgecolor=edge_col, lw=1.6
+      )
+  )
+  ax.add_patch(
+      patches.Polygon(
+          t_pts, closed=True, facecolor=col_top, edgecolor=edge_col, lw=1.6
+      )
+  )
+  ax.add_patch(
+      patches.Polygon(
+          s_pts, closed=True, facecolor=col_side, edgecolor=edge_col, lw=1.6
+      )
+  )
+
+  if label:
+    cx, cy = x0 + lx / 2, y0 + ly / 2
+    px, py = project_oblique(cx, cy, z0)
+    ax.text(
+        px,
+        py,
+        label,
+        fontsize=20,
+        fontweight="bold",
+        color="white",
+        ha="center",
+        va="center",
+        alpha=0.95,
+    )
+  return f_pts + t_pts + s_pts
+
+
+def draw_partially_filled_prism(ax, l, w, h):
+  col_f, col_t, col_s = "#48cae4", "#caf0f8", "#0077b6"
+  edge_col = "#03045e"
+
+  occupied = set()
+  for x in range(l):
+    for z in range(w):
+      occupied.add((x, 0, z))
+  for y in range(h):
+    occupied.add((0, y, 0))
+
+  sorted_cubes = sorted(list(occupied), key=lambda c: (-c[2], c[1], c[0]))
+  for x, y, z in sorted_cubes:
+    if (x, y, z - 1) not in occupied:
+      f = [
+          project_oblique(x, y, z),
+          project_oblique(x + 1, y, z),
+          project_oblique(x + 1, y + 1, z),
+          project_oblique(x, y + 1, z),
+      ]
+      ax.add_patch(
+          patches.Polygon(
+              f, closed=True, facecolor=col_f, edgecolor=edge_col, lw=1.1
+          )
+      )
+    if (x, y + 1, z) not in occupied:
+      t = [
+          project_oblique(x, y + 1, z),
+          project_oblique(x + 1, y + 1, z),
+          project_oblique(x + 1, y + 1, z + 1),
+          project_oblique(x, y + 1, z + 1),
+      ]
+      ax.add_patch(
+          patches.Polygon(
+              t, closed=True, facecolor=col_t, edgecolor=edge_col, lw=1.1
+          )
+      )
+    if (x + 1, y, z) not in occupied:
+      s = [
+          project_oblique(x + 1, y, z),
+          project_oblique(x + 1, y, z + 1),
+          project_oblique(x + 1, y + 1, z + 1),
+          project_oblique(x + 1, y + 1, z),
+      ]
+      ax.add_patch(
+          patches.Polygon(
+              s, closed=True, facecolor=col_s, edgecolor=edge_col, lw=1.1
+          )
+      )
+
+  wire_lines = [
+      [(0, 0, 0), (l, 0, 0)],
+      [(l, 0, 0), (l, h, 0)],
+      [(l, h, 0), (0, h, 0)],
+      [(0, h, 0), (0, 0, 0)],
+      [(0, h, 0), (0, h, w)],
+      [(l, h, 0), (l, h, w)],
+      [(l, h, w), (0, h, w)],
+      [(l, 0, 0), (l, 0, w)],
+      [(l, 0, w), (l, h, w)],
+  ]
+  for p_start, p_end in wire_lines:
+    ps, pe = project_oblique(*p_start), project_oblique(*p_end)
+    ax.plot([ps[0], pe[0]], [ps[1], pe[1]], color="#0f172a", lw=2.2)
+
+  all_corners = [
+      project_oblique(x, y, z)
+      for x in (0, l)
+      for y in (0, h)
+      for z in (0, w)
+  ]
+  xs, ys = [p[0] for p in all_corners], [p[1] for p in all_corners]
+  ax.set_xlim(min(xs) - 1.0, max(xs) + 1.0)
+  ax.set_ylim(min(ys) - 1.0, max(ys) + 1.0)
+  ax.axis("off")
+
+
+def draw_warehouse_building(ax, l1, h1, l2, h2, w):
+  col_front_a, col_front_b = "#00a8cc", "#38bdf8"
+  col_top, col_side = "#bbf2f6", "#0077b6"
+  edge = "#042f2e"
+
+  # Section A (Left Tall Block: Width l1=20, Height h1=50, Depth w=25)
+  render_box(
+      ax,
+      0,
+      0,
+      0,
+      l1,
+      h1,
+      w,
+      col_front=col_front_a,
+      col_top=col_top,
+      col_side=col_side,
+  )
+  # Section B (Right Short Block: Width l2=30, Height h2=25, Depth w=50)
+  render_box(
+      ax,
+      l1,
+      0,
+      0,
+      l2,
+      h2,
+      50,
+      col_front=col_front_b,
+      col_top=col_top,
+      col_side=col_side,
+  )
+
+  # Windows & Doors
+  for wy in [h1 * 0.4, h1 * 0.7]:
+    for wx in [l1 * 0.25, l1 * 0.65]:
+      w_pts = [
+          project_oblique(wx - 2, wy - 2, 0),
+          project_oblique(wx + 2, wy - 2, 0),
+          project_oblique(wx + 2, wy + 2, 0),
+          project_oblique(wx - 2, wy + 2, 0),
+      ]
+      ax.add_patch(
+          patches.Polygon(
+              w_pts, closed=True, facecolor="#ffffff", edgecolor=edge, lw=1.2
+          )
+      )
+
+  d_pts = [
+      project_oblique(l1 * 0.45 - 2, 0, 0),
+      project_oblique(l1 * 0.45 + 2, 0, 0),
+      project_oblique(l1 * 0.45 + 2, h1 * 0.25, 0),
+      project_oblique(l1 * 0.45 - 2, h1 * 0.25, 0),
+  ]
+  ax.add_patch(
+      patches.Polygon(
+          d_pts, closed=True, facecolor="#ffffff", edgecolor=edge, lw=1.2
+      )
+  )
+
+  db_pts = [
+      project_oblique(l1 + l2 * 0.65 - 1.5, 0, 0),
+      project_oblique(l1 + l2 * 0.65 + 1.5, 0, 0),
+      project_oblique(l1 + l2 * 0.65 + 1.5, h2 * 0.35, 0),
+      project_oblique(l1 + l2 * 0.65 - 1.5, h2 * 0.35, 0),
+  ]
+  ax.add_patch(
+      patches.Polygon(
+          db_pts, closed=True, facecolor="#ffffff", edgecolor=edge, lw=1.2
+      )
+  )
+
+  # PRECISELY POSITIONED WAREHOUSE LABELS MATCHING SCREENSHOT
+  # 1. Left Block Height (50 ft)
+  p_h_bot, p_h_top = project_oblique(0, 0, 0), project_oblique(0, h1, 0)
+  ax.text(
+      p_h_bot[0] - 3.2,
+      (p_h_bot[1] + p_h_top[1]) / 2,
+      f"{h1} ft",
+      fontsize=11,
+      fontweight="bold",
+      color="#f8fafc",
+      ha="right",
+      va="center",
+  )
+
+  # 2. Left Block Width (20 ft) on bottom front edge
+  p_w_l, p_w_r = project_oblique(0, 0, 0), project_oblique(l1, 0, 0)
+  ax.text(
+      (p_w_l[0] + p_w_r[0]) / 2,
+      p_w_l[1] - 2.2,
+      f"{l1} ft",
+      fontsize=11,
+      fontweight="bold",
+      color="#f8fafc",
+      ha="center",
+      va="top",
+  )
+
+  # 3. Left Block Depth (25 ft) along top receding edge
+  p_d_f, p_d_b = project_oblique(l1 // 2, h1, 0), project_oblique(l1 // 2, h1, w)
+  ax.text(
+      (p_d_f[0] + p_d_b[0]) / 2 + 1.5,
+      (p_d_f[1] + p_d_b[1]) / 2 + 1.0,
+      f"{w} ft",
+      fontsize=11,
+      fontweight="bold",
+      color="#f8fafc",
+      ha="center",
+      va="bottom",
+  )
+
+  # 4. Right Block Depth (50 ft) along right receding edge
+  p_sd_f, p_sd_b = project_oblique(l1 + l2, h2, 0), project_oblique(
+      l1 + l2, h2, 50
+  )
+  ax.text(
+      (p_sd_f[0] + p_sd_b[0]) / 2 + 3.5,
+      (p_sd_f[1] + p_sd_b[1]) / 2,
+      f"{50} ft",
+      fontsize=11,
+      fontweight="bold",
+      color="#f8fafc",
+      ha="left",
+      va="center",
+  )
+
+  all_pts = [
+      project_oblique(x, y, z)
+      for x in (0, l1 + l2)
+      for y in (0, h1)
+      for z in (0, 50)
+  ]
+  xs, ys = [p[0] for p in all_pts], [p[1] for p in all_pts]
+  ax.set_xlim(min(xs) - 8, max(xs) + 12)
+  ax.set_ylim(min(ys) - 8, max(ys) + 8)
+  ax.axis("off")
+
+
+def draw_stacked_ratio_boxes(ax, la, wa, lb, wb):
+  h_a, h_b = 5, 5
+  render_box(
+      ax,
+      (lb - la) / 2,
+      h_b,
+      0,
+      la,
+      h_a,
+      wa,
+      col_front="#f59e0b",
+      col_top="#fde68a",
+      col_side="#d97706",
+      label="A",
+  )
+  render_box(
+      ax,
+      0,
+      0,
+      0,
+      lb,
+      h_b,
+      wb,
+      col_front="#00a8cc",
+      col_top="#bbf2f6",
+      col_side="#0077b6",
+      label="B",
+  )
+
+  p_top_l, p_top_r = project_oblique(
+      (lb - la) / 2, h_b + h_a + 0.6, 0
+  ), project_oblique((lb + la) / 2, h_b + h_a + 0.6, 0)
+  ax.text(
+      (p_top_l[0] + p_top_r[0]) / 2,
+      p_top_l[1] + 0.4,
+      f"{la} in.",
+      fontsize=11,
+      fontweight="bold",
+      color="#f8fafc",
+      ha="center",
+  )
+
+  p_bot_l, p_bot_r = project_oblique(0, -0.8, 0), project_oblique(lb, -0.8, 0)
+  ax.text(
+      (p_bot_l[0] + p_bot_r[0]) / 2,
+      p_bot_l[1] - 0.4,
+      f"{lb} in.",
+      fontsize=11,
+      fontweight="bold",
+      color="#f8fafc",
+      ha="center",
+  )
+
+  p_side_f, p_side_b = project_oblique(lb + 0.5, -0.5, 0), project_oblique(
+      lb + 0.5, -0.5, wb
+  )
+  ax.text(
+      p_side_f[0] + 0.6,
+      (p_side_f[1] + p_side_b[1]) / 2,
+      f"{wb} in.",
+      fontsize=11,
+      fontweight="bold",
+      color="#f8fafc",
+      ha="left",
+  )
+
+  p_ha_mid = project_oblique((lb + la) / 2 + 0.5, h_b + h_a / 2, 0)
+  ax.text(
+      p_ha_mid[0] + 0.4,
+      p_ha_mid[1],
+      "? in.",
+      fontsize=11,
+      fontweight="bold",
+      color="#f59e0b",
+      ha="left",
+  )
+
+  p_hb_mid = project_oblique(lb + 0.5, h_b / 2, 0)
+  ax.text(
+      p_hb_mid[0] + 0.4,
+      p_hb_mid[1],
+      "? in.",
+      fontsize=11,
+      fontweight="bold",
+      color="#00a8cc",
+      ha="left",
+  )
+
+  all_pts = [
+      project_oblique(x, y, z)
+      for x in (0, lb)
+      for y in (0, h_a + h_b)
+      for z in (0, wb)
+  ]
+  xs, ys = [p[0] for p in all_pts], [p[1] for p in all_pts]
+  ax.set_xlim(min(xs) - 2.0, max(xs) + 3.0)
+  ax.set_ylim(min(ys) - 2.0, max(ys) + 2.0)
+  ax.axis("off")
+
+
+def draw_unit_cube_stepped_solid(ax, l1, h1, l2, h2, w):
+  col_f, col_t, col_s = "#48cae4", "#caf0f8", "#0077b6"
+  edge_col = "#0f172a"
+  occupied = set()
+  for x in range(l1):
+    for y in range(h1):
+      for z in range(w):
+        occupied.add((x, y, z))
+  for x in range(l1, l1 + l2):
+    for y in range(h2):
+      for z in range(w):
+        occupied.add((x, y, z))
+
+  sorted_cubes = sorted(list(occupied), key=lambda c: (-c[2], c[1], c[0]))
+  all_pts = []
+  for x, y, z in sorted_cubes:
+    if (x, y, z - 1) not in occupied:
+      f = [
+          project_oblique(x, y, z),
+          project_oblique(x + 1, y, z),
+          project_oblique(x + 1, y + 1, z),
+          project_oblique(x, y + 1, z),
+      ]
+      ax.add_patch(
+          patches.Polygon(
+              f, closed=True, facecolor=col_f, edgecolor=edge_col, lw=1.2
+          )
+      )
+      all_pts.extend(f)
+    if (x, y + 1, z) not in occupied:
+      t = [
+          project_oblique(x, y + 1, z),
+          project_oblique(x + 1, y + 1, z),
+          project_oblique(x + 1, y + 1, z + 1),
+          project_oblique(x, y + 1, z + 1),
+      ]
+      ax.add_patch(
+          patches.Polygon(
+              t, closed=True, facecolor=col_t, edgecolor=edge_col, lw=1.2
+          )
+      )
+      all_pts.extend(t)
+    if (x + 1, y, z) not in occupied:
+      s = [
+          project_oblique(x + 1, y, z),
+          project_oblique(x + 1, y, z + 1),
+          project_oblique(x + 1, y + 1, z + 1),
+          project_oblique(x + 1, y + 1, z),
+      ]
+      ax.add_patch(
+          patches.Polygon(
+              s, closed=True, facecolor=col_s, edgecolor=edge_col, lw=1.2
+          )
+      )
+      all_pts.extend(s)
+
+  xs, ys = [p[0] for p in all_pts], [p[1] for p in all_pts]
+  ax.set_xlim(min(xs) - 0.8, max(xs) + 0.8)
+  ax.set_ylim(min(ys) - 0.8, max(ys) + 0.8)
+  ax.axis("off")
+
+
+def generate_diagram(diagram_type: str, params: dict) -> io.BytesIO:
+  fig, ax = plt.subplots(figsize=(6.2, 3.8), dpi=140)
+  if diagram_type == "partially_filled":
+    draw_partially_filled_prism(ax, params["l"], params["w"], params["h"])
+  elif diagram_type == "warehouse_building":
+    draw_warehouse_building(
+        ax,
+        params["l1"],
+        params["h1"],
+        params["l2"],
+        params["h2"],
+        params["w"],
+    )
+  elif diagram_type == "stacked_ratio_boxes":
+    draw_stacked_ratio_boxes(
+        ax, params["la"], params["wa"], params["lb"], params["wb"]
+    )
+  elif diagram_type == "stepped_solid":
+    draw_unit_cube_stepped_solid(
+        ax,
+        params["l1"],
+        params["h1"],
+        params["l2"],
+        params["h2"],
+        params["w"],
+    )
+
+  buf = io.BytesIO()
+  plt.tight_layout()
+  plt.savefig(buf, format="png", bbox_inches="tight", transparent=True)
+  buf.seek(0)
+  plt.close(fig)
+  return buf
+
+
+def helper_shuffle_options(correct_text, distractor_texts):
+  opts = [correct_text] + distractor_texts
+  random.shuffle(opts)
+  return opts
+
+
+def clean_math_string(s: str) -> str:
+  s = str(s).strip().lower().replace(",", "")
+  s = re.sub(
+      r"\b(cubic\s+units?|cubic\s+inches?|cubic\s+feet?|cu\s+ft|cu\s+in|inches?|feet?|ft|in|cubes?|meters?|m)\b",
+      "",
+      s,
+  )
+  return s.strip()
+
+
+def check_user_answer(user_input, q: dict) -> bool:
+  if q.get("input_type") == "multiselect":
+    return set(q.get("correct_answers", [])) == set(
+        user_input if isinstance(user_input, list) else []
+    )
+
+  if q.get("input_type") == "multi_text":
+    if not isinstance(user_input, dict):
+      return False
+    for k, acc_list in q.get("accepted_answers_dict", {}).items():
+      val = clean_math_string(user_input.get(k, ""))
+      acc_cleaned = [clean_math_string(a) for a in acc_list]
+      if val not in acc_cleaned:
+        matched = False
+        try:
+          u_float = float(eval(val))
+          for a in acc_cleaned:
+            if math.isclose(u_float, float(eval(a)), rel_tol=1e-4):
+              matched = True
+              break
+        except:
+          pass
+        if not matched:
+          return False
+    return True
+
+  if q.get("input_type") == "radio":
+    return user_input == q["answer"]
+
+  cleaned_user = clean_math_string(user_input)
+  accepted = [clean_math_string(ans) for ans in q.get("accepted_answers", [])]
+  if cleaned_user in accepted:
+    return True
+  try:
+    user_num = float(eval(cleaned_user))
+    for acc in accepted:
+      if math.isclose(user_num, float(eval(acc)), rel_tol=1e-4):
+        return True
+  except:
+    pass
+  return False
+
+
+# ==============================================================================
+# 5. UNIT 2: VOLUME GENERATORS
+# ==============================================================================
+def gen_mh_u2_vocab_composite():
+  correct = "composite solid"
+  opts = helper_shuffle_options(
+      correct, ["rectangular prism", "unit cube", "volume"]
+  )
+  return {
+      "template_id": "mh_u2_vocab_composite",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-4",
+      "input_type": "radio",
+      "options": opts,
+      "scenario": "Lesson 2-4: Complete the vocabulary sentence.",
+      "question": (
+          "A [ _____ ] is a solid figure that is made up of two or more solids."
+      ),
+      "answer": correct,
+      "explanation": (
+          "A **composite solid** is formed by combining two or more geometric"
+          " solids."
+      ),
+  }
+
+
+def gen_mh_u2_vocab_volume():
+  correct = "volume"
+  opts = helper_shuffle_options(
+      correct, ["surface area", "perimeter", "capacity"]
+  )
+  return {
+      "template_id": "mh_u2_vocab_volume",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-1",
+      "input_type": "radio",
+      "options": opts,
+      "scenario": "Lesson 2-1: Complete the vocabulary sentence.",
+      "question": (
+          "The space occupied by a 3-dimensional figure, or solid figure, is"
+          " called [ _____ ]."
+      ),
+      "answer": correct,
+      "explanation": (
+          "**Volume** measures the amount of 3D space contained inside a solid"
+          " figure."
+      ),
+  }
+
+
+def gen_mh_u2_vocab_unit_cube():
+  correct = "unit cube"
+  opts = helper_shuffle_options(
+      correct, ["cubic unit", "rectangular prism", "face"]
+  )
+  return {
+      "template_id": "mh_u2_vocab_unit_cube",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-1",
+      "input_type": "radio",
+      "options": opts,
+      "scenario": "Lesson 2-1: Complete the vocabulary sentence.",
+      "question": (
+          "A cube with edge lengths of one unit is called a [ _____ ]."
+      ),
+      "answer": correct,
+      "explanation": (
+          "A cube where length, width, and height are each 1 unit is a **unit"
+          " cube**."
+      ),
+  }
+
+
+def gen_mh_u2_vocab_cubic_unit():
+  correct = "cubic unit"
+  opts = helper_shuffle_options(
+      correct, ["square unit", "linear unit", "unit fraction"]
+  )
+  return {
+      "template_id": "mh_u2_vocab_cubic_unit",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-2",
+      "input_type": "radio",
+      "options": opts,
+      "scenario": "Lesson 2-2: Complete the vocabulary sentence.",
+      "question": "A [ _____ ] is a unit for measuring volume.",
+      "answer": correct,
+      "explanation": (
+          "Volume is measured in **cubic units** (e.g., cubic inches, cubic"
+          " centimeters)."
+      ),
+  }
+
+
+def gen_mh_u2_vocab_formula():
+  correct = "formula"
+  opts = helper_shuffle_options(correct, ["expression", "variable", "operation"])
+  return {
+      "template_id": "mh_u2_vocab_formula",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-3",
+      "input_type": "radio",
+      "options": opts,
+      "scenario": "Lesson 2-3: Complete the vocabulary sentence.",
+      "question": (
+          "A [ _____ ] is an equation that describes the relationship between"
+          " two or more quantities."
+      ),
+      "answer": correct,
+      "explanation": (
+          "A **formula** (like $V = l \\times w \\times h$) relates dimensions"
+          " to volume."
+      ),
+  }
+
+
+def gen_mh_u2_vocab_prism():
+  correct = "rectangular prism"
+  opts = helper_shuffle_options(correct, ["cube", "cylinder", "pyramid"])
+  return {
+      "template_id": "mh_u2_vocab_prism",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-1",
+      "input_type": "radio",
+      "options": opts,
+      "scenario": "Lesson 2-1: Complete the vocabulary sentence.",
+      "question": (
+          "A 3-dimensional figure with six rectangular faces is called a"
+          " [ _____ ]."
+      ),
+      "answer": correct,
+      "explanation": (
+          "A **rectangular prism** is bounded by 6 rectangular flat faces."
+      ),
+  }
+
+
+def gen_mh_u2_target_volume_multiselect():
+  target_vol = random.choice([24, 36, 48])
+  options_data = [
+      (
+          f"Length = {target_vol // 6} units, Width = 3 units, Height = 2"
+          " units",
+          True,
+      ),
+      (
+          f"Length = {target_vol // 4} units, Width = 2 units, Height = 2"
+          " units",
+          True,
+      ),
+      (
+          f"Length = {target_vol // 2} units, Width = 1 unit, Height = 2 units",
+          True,
+      ),
+      ("Length = 3 units, Width = 3 units, Height = 3 units", 27 == target_vol),
+      ("Length = 5 units, Width = 2 units, Height = 4 units", 40 == target_vol),
+      ("Length = 6 units, Width = 6 units, Height = 2 units", 72 == target_vol),
+  ]
+  random.shuffle(options_data)
+  opts = [p[0] for p in options_data]
+  correct_opts = [p[0] for p in options_data if p[1]]
+  return {
+      "template_id": "mh_u2_target_vol_multiselect",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-3",
+      "input_type": "multiselect",
+      "options": opts,
+      "correct_answers": correct_opts,
+      "scenario": "Lesson 2-3: Choose all that apply.",
+      "question": (
+          f"Which rectangular prisms have a volume of **{target_vol} cubic"
+          " units**?"
+      ),
+      "explanation": (
+          "Multiply length × width × height for each option. Options equaling"
+          f" {target_vol} are correct."
+      ),
+  }
+
+
+def gen_mh_u2_partially_filled_prism():
+  l, w, h = (
+      random.choice([3, 4, 5]),
+      random.choice([2, 3]),
+      random.choice([3, 4]),
+  )
+  total_vol = l * w * h
+  return {
+      "template_id": "mh_u2_partially_filled",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-2",
+      "input_type": "text",
+      "placeholder": "Enter number of cubic units (e.g., 24)",
+      "diagram": "partially_filled",
+      "diagram_params": {"l": l, "w": w, "h": h},
+      "scenario": (
+          "Lesson 2-2: The figure shows a rectangular prism partially filled"
+          " with unit cubes."
+      ),
+      "question": (
+          f"What is the volume of the rectangular prism? (Dimensions: {l} long,"
+          f" {w} wide, {h} tall)"
+      ),
+      "answer": f"{total_vol} cubic units",
+      "accepted_answers": [str(total_vol), f"{total_vol} cubic units"],
+      "explanation": (
+          f"The prism holds {l} cubes in length, {w} in width, and {h} in"
+          f" height: {l} × {w} × {h} = **{total_vol} cubic units**."
+      ),
+  }
+
+
+def gen_mh_u2_associative_property():
+  l, w, h = random.randint(3, 5), random.randint(2, 4), random.randint(2, 4)
+  correct = f"({l} × {w}) × {h} = {l} × ({w} × {h})"
+  distractors = [
+      f"({l} × {w}) × {h} = ({l} × {w}) + {h}",
+      f"{l} × ({w} × {h}) = ({l} × {w}) × ({l} × {h})",
+      f"{l} × ({w} + {h}) = ({l} × {w}) + ({l} × {h})",
+  ]
+  opts = helper_shuffle_options(correct, distractors)
+  return {
+      "template_id": "mh_u2_associative_property",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-3",
+      "input_type": "radio",
+      "options": opts,
+      "scenario": "Lesson 2-3: Decomposing rectangular prisms into layers.",
+      "question": (
+          "Which equation represents the different ways to find the volume of a"
+          f" prism measuring {l} units by {w} units by {h} units?"
+      ),
+      "answer": correct,
+      "explanation": f"By the Associative Property of Multiplication: **{correct}**.",
+  }
+
+
+def gen_mh_u2_pool_depth_problem():
+  length = random.choice([30, 40, 42])
+  width = random.choice([12, 15, 20])
+  wall_h = random.choice([5, 6])
+  depth = wall_h - random.choice([1, 2])
+
+  water_vol = length * width * depth
+  pool_vol = length * width * wall_h
+
+  correct = f"{water_vol:,} cubic feet"
+  distractors = [
+      f"{pool_vol:,} cubic feet",
+      f"{length * width:,} cubic feet",
+      f"{water_vol * 2:,} cubic feet",
+  ]
+  opts = helper_shuffle_options(correct, distractors)
+  return {
+      "template_id": "mh_u2_pool_depth",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-5",
+      "input_type": "radio",
+      "options": opts,
+      "scenario": (
+          f"A rectangular pool is {length} feet long, {width} feet wide, and"
+          f" {wall_h} feet high. It is filled with water to a depth of {depth}"
+          " feet."
+      ),
+      "question": "What is the volume of the water in the pool?",
+      "answer": correct,
+      "explanation": (
+          f"Use the water's depth ({depth} ft), NOT the pool wall height"
+          f" ({wall_h} ft)! Volume = {length} × {width} × {depth} = **{correct}**."
+      ),
+  }
+
+
+def gen_mh_u2_dimensions_multiselect():
+  target = random.choice([48, 60, 72])
+  if target == 48:
+    c1, c2 = (
+        "length = 24 inches, width = 1 inch, height = 2 inches",
+        "length = 12 inches, width = 2 inches, height = 2 inches",
+    )
+    w1, w2 = (
+        "length = 6 inches, width = 6 inches, height = 4 inches",
+        "length = 16 inches, width = 16 inches, height = 16 inches",
+    )
+  elif target == 60:
+    c1, c2 = (
+        "length = 10 inches, width = 3 inches, height = 2 inches",
+        "length = 6 inches, width = 5 inches, height = 2 inches",
+    )
+    w1, w2 = (
+        "length = 15 inches, width = 4 inches, height = 2 inches",
+        "length = 4 inches, width = 4 inches, height = 4 inches",
+    )
+  else:
+    c1, c2 = (
+        "length = 12 inches, width = 3 inches, height = 2 inches",
+        "length = 9 inches, width = 4 inches, height = 2 inches",
+    )
+    w1, w2 = (
+        "length = 8 inches, width = 8 inches, height = 2 inches",
+        "length = 10 inches, width = 7 inches, height = 1 inch",
+    )
+
+  pairs = [(c1, True), (c2, True), (w1, False), (w2, False)]
+  random.shuffle(pairs)
+  opts = [p[0] for p in pairs]
+  corr = [p[0] for p in pairs if p[1]]
+  return {
+      "template_id": "mh_u2_dimensions_multiselect",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-3",
+      "input_type": "multiselect",
+      "options": opts,
+      "correct_answers": corr,
+      "scenario": (
+          f"The volume of a rectangular prism is {target} cubic inches."
+      ),
+      "question": (
+          "Which could be the dimensions of the prism? (Choose all that apply)"
+      ),
+      "explanation": (
+          "Multiply length × width × height for each option. Those that equal"
+          f" {target} cubic inches are valid."
+      ),
+  }
+
+
+def gen_mh_u2_stepped_solid_volume():
+  l1, h1 = random.choice([3, 4]), random.choice([2, 3])
+  l2, h2 = random.choice([3, 4]), h1 + 1
+  w = 2
+  tot = (l1 * h1 * w) + (l2 * h2 * w)
+
+  correct = f"{tot} cubic units"
+  distractors = [
+      f"{tot - 4} cubic units",
+      f"{tot + 2} cubic units",
+      f"{tot + 6} cubic units",
+  ]
+  opts = helper_shuffle_options(correct, distractors)
+  return {
+      "template_id": "mh_u2_stepped_solid",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-4",
+      "input_type": "radio",
+      "options": opts,
+      "diagram": "stepped_solid",
+      "diagram_params": {"l1": l1, "h1": h1, "l2": l2, "h2": h2, "w": w},
+      "scenario": "Lesson 2-4: Composite solids made of unit cubes.",
+      "question": "What is the volume of this figure?",
+      "answer": correct,
+      "explanation": (
+          f"Left section: {l1} × {w} × {h1} = {l1*w*h1} cubes. Right section:"
+          f" {l2} × {w} × {h2} = {l2*w*h2} cubes. Total = **{tot} cubic"
+          " units**."
+      ),
+  }
+
+
+def gen_mh_u2_warehouse_problem():
+  # Exact McGraw-Hill benchmark numbers from screenshot:
+  # Section A: 20 ft wide, 50 ft high, 25 ft deep -> Volume = 25,000 cu ft
+  # Section B: 30 ft wide, 25 ft high, 50 ft deep -> Volume = 37,500 cu ft
+  # Total Volume = 62,500 cu ft
+  tot = 62500
+  correct = f"{tot:,} cubic feet"
+  distractors = ["37,500 cubic feet", "87,500 cubic feet", "50,000 cubic feet"]
+  opts = helper_shuffle_options(correct, distractors)
+  return {
+      "template_id": "mh_u2_warehouse",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-4",
+      "input_type": "radio",
+      "options": opts,
+      "diagram": "warehouse_building",
+      "diagram_params": {"l1": 20, "h1": 50, "l2": 30, "h2": 25, "w": 25},
+      "scenario": "The figure shows the plans for a warehouse.",
+      "question": "What will be the volume of the warehouse?",
+      "answer": correct,
+      "explanation": (
+          "Section A: 20 ft wide × 25 ft deep × 50 ft high = 25,000 cu ft.\n"
+          "Section B: 30 ft wide × 50 ft deep × 25 ft high = 37,500 cu ft.\n"
+          "Total Volume = 25,000 + 37,500 = **62,500 cubic feet**."
+      ),
+  }
+
+
+def gen_mh_u2_stacked_boxes_table():
+  tot_vol = 270
+  va = 90
+  vb = 180
+  ha = 5
+  hb = 5
+  return {
+      "template_id": "mh_u2_stacked_boxes_table",
+      "topic": "Unit 2: Volume",
+      "lesson": "Lesson 2-4",
+      "hint": (
+          "Since Box B is twice the volume of Box A, divide the total 270 into"
+          " 3 equal parts (1 part for A, 2 parts for B). Then find the missing"
+          " height using Volume ÷ (Length × Width)."
+      ),
+      "input_type": "multi_text",
+      "diagram": "stacked_ratio_boxes",
+      "diagram_params": {"la": 3, "wa": 6, "lb": 6, "wb": 6},
+      "scenario": (
+          f"The combined volume of the two boxes shown is {tot_vol} cubic"
+          " inches. Box A and Box B have the same height and the same 6-inch"
+          " depth. Box B has twice the volume of Box A."
+      ),
+      "question": "Determine the height and volume of each box.",
+      "blank_fields": [
+          {
+              "key": "ha",
+              "label": "Box A Height (in.):",
+              "placeholder": "Enter height in inches (e.g., 8)",
+          },
+          {
+              "key": "va",
+              "label": "Box A Volume (cubic in.):",
+              "placeholder": "Enter volume in cu in (e.g., 120)",
+          },
+          {
+              "key": "hb",
+              "label": "Box B Height (in.):",
+              "placeholder": "Enter height in inches (e.g., 4)",
+          },
+          {
+              "key": "vb",
+              "label": "Box B Volume (cubic in.):",
+              "placeholder": "Enter volume in cu in (e.g., 240)",
+          },
+      ],
+      "accepted_answers_dict": {
+          "ha": [str(ha)],
+          "va": [str(va)],
+          "hb": [str(hb)],
+          "vb": [str(vb)],
+      },
+      "explanation": (
+          f"1. **Divide Volume by Ratios:** Box A is 1 part, Box B is 2 parts (3"
+          f" total parts).\n   * Box A Volume = {tot_vol} ÷ 3 = **{va} cu in**\n"
+          f"   * Box B Volume = {va} × 2 = **{vb} cu in**\n2. **Find Height:**\n"
+          f"   * Box B Base Area = 6 in. × 6 in. = 36 sq in.\n   * Height = {vb}"
+          f" ÷ 36 = **{hb} in.**\n   * Since both boxes share the same height,"
+          f" Box A Height is also **{ha} in.**"
+      ),
+  }
+
+
+# ==============================================================================
+# 6. UNIT 3: PLACE VALUE & NUMBER RELATIONSHIPS GENERATORS
+# ==============================================================================
 def gen_mh_compare_digits_two_numbers():
   d = random.choice([4, 6, 7, 8, 9])
   num_a = random.randint(2, 5) * 100000 + d * 10000 + random.randint(100, 999)
@@ -926,7 +1332,7 @@ def gen_mh_compare_digits_two_numbers():
   opts = helper_shuffle_options(correct, distractors)
   return {
       "template_id": "mh_compare_digits_two_numbers",
-      "topic": "Unit 3: Place Value",
+      "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-1",
       "hint": (
           f"Compare the positions: Find which place {d} is in for each number,"
@@ -949,13 +1355,11 @@ def gen_mh_compare_digits_two_numbers():
   }
 
 
-# --- Item 8: Standard form from word form (Lesson 3-3) ---
 def gen_mh_word_to_standard_fill():
   w = random.randint(21, 65)
   t = random.randint(1, 9)
   rem = random.randint(11, 29)
-  h = rem // 10
-  th = rem % 10
+  h, th = rem // 10, rem % 10
 
   w_str = number_to_word_2digit(w)
   dec_str = f"{ONES_WORDS[t]} hundred {number_to_word_2digit(rem)} thousandths"
@@ -964,14 +1368,14 @@ def gen_mh_word_to_standard_fill():
 
   return {
       "template_id": "mh_word_to_standard_fill",
-      "topic": "Unit 3: Place Value",
+      "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-3",
       "hint": (
           "Remember that the word 'and' represents where the decimal point"
           " goes."
       ),
       "input_type": "text",
-      "placeholder": "Enter standard form (e.g., 0.123)",
+      "placeholder": "Enter standard decimal (e.g., 0.123)",
       "scenario": "Lesson 3-3: Converting decimal word forms to standard form.",
       "question": (
           f"Complete the sentence.\n\nIn standard form, the number"
@@ -986,7 +1390,6 @@ def gen_mh_word_to_standard_fill():
   }
 
 
-# --- Item 9: Multi-Select True Comparisons (Lesson 3-4) ---
 def gen_mh_multiselect_comparisons():
   true_pairs = [
       ("0.49 < 0.5", True),
@@ -1004,7 +1407,7 @@ def gen_mh_multiselect_comparisons():
 
   return {
       "template_id": "mh_multiselect_comparisons",
-      "topic": "Unit 3: Place Value",
+      "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-4",
       "hint": (
           "Line up the decimal points and compare digits from left to right"
@@ -1025,7 +1428,6 @@ def gen_mh_multiselect_comparisons():
   }
 
 
-# --- Item 10: Dual-Blank Rounding with Decimal Round Half-Up (Lesson 3-5) ---
 def gen_mh_dual_rounding_fill():
   w = random.choice([0, 1, 2, 4])
   t = random.randint(3, 8)
@@ -1040,7 +1442,7 @@ def gen_mh_dual_rounding_fill():
 
   return {
       "template_id": "mh_dual_rounding_fill",
-      "topic": "Unit 3: Place Value",
+      "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-5",
       "hint": (
           "Find the rounding place, then look at the digit to its right: 5 or"
@@ -1075,14 +1477,11 @@ def gen_mh_dual_rounding_fill():
   }
 
 
-# --- Item 11: Multi-Select Rounding Target (Lesson 3-5) ---
 def gen_mh_multiselect_rounding():
   base = round(random.choice([3.2, 5.4, 8.1, 9.3]), 1)
-
   c1 = round(base - 0.03 + random.uniform(0.001, 0.004), 3)
   c2 = round(base + 0.02 + random.uniform(0.001, 0.004), 3)
   c3 = round(base + 0.03, 2)
-
   w1 = round(base - 0.11, 2)
   w2 = round(base + 0.062, 3)
   w3 = round(base - 0.088, 3)
@@ -1102,7 +1501,7 @@ def gen_mh_multiselect_rounding():
 
   return {
       "template_id": "mh_multiselect_rounding",
-      "topic": "Unit 3: Place Value",
+      "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-5",
       "hint": (
           "Test each option individually: Look at its hundredths place digit to"
@@ -1126,7 +1525,6 @@ def gen_mh_multiselect_rounding():
   }
 
 
-# --- Item 12: Data Table Decimal Comparison (Lesson 3-4) ---
 def gen_mh_table_comparison():
   w = random.randint(320, 480)
   v1 = round(w + random.choice([0.25, 0.42, 0.65]), 2)
@@ -1140,7 +1538,7 @@ def gen_mh_table_comparison():
 
   return {
       "template_id": "mh_table_comparison",
-      "topic": "Unit 3: Place Value",
+      "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-4",
       "hint": (
           "Since the whole numbers are identical, compare the tenths digits"
@@ -1155,11 +1553,7 @@ def gen_mh_table_comparison():
       ),
       "question": "Write a comparison using >, <, or =.",
       "answer": sym,
-      "accepted_answers": [
-          sym,
-          f"{v1} {sym} {v2}",
-          f"{v1}{sym}{v2}",
-      ],
+      "accepted_answers": [sym, f"{v1} {sym} {v2}", f"{v1}{sym}{v2}"],
       "explanation": (
           f"{v1} is {sym} {v2} because at the tenths place, {str(v1)[4]} is"
           f" {'>' if sym=='>' else '<'} {str(v2)[4]}."
@@ -1167,13 +1561,10 @@ def gen_mh_table_comparison():
   }
 
 
-# --- Item 13: True statements comparing 10 times and 1/10 (Lesson 3-2) ---
 def gen_mh_true_powers_statement():
   val = random.choice([2, 4, 5, 7])
-  v_ones = val
-  v_tenths = round(val * 0.1, 1)
-  v_hund = round(val * 0.01, 2)
-  v_thou = round(val * 0.001, 3)
+  v_ones, v_tenths = val, round(val * 0.1, 1)
+  v_hund, v_thou = round(val * 0.01, 2), round(val * 0.001, 3)
 
   correct = f"{v_hund} is 10 times {v_thou}"
   distractors = [
@@ -1185,7 +1576,7 @@ def gen_mh_true_powers_statement():
 
   return {
       "template_id": "mh_true_powers_statement",
-      "topic": "Unit 3: Place Value",
+      "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-2",
       "hint": (
           "Remember: A digit in one place is 10 times what it is in the place"
@@ -1205,21 +1596,18 @@ def gen_mh_true_powers_statement():
   }
 
 
-# --- Items 14 & 15: Sentence Fill-in Multiplier (Lesson 3-2) ---
 def gen_mh_multiplier_fill_sentence():
   val = random.choice([3, 5, 7, 8])
   mode = random.choice(["ten_times", "one_tenth"])
 
   if mode == "ten_times":
-    left = f"{val}"
-    right = f"{val*0.1:.1f}"
+    left, right = f"{val}", f"{val*0.1:.1f}"
     ans_text = "10 times"
     accepted = ["10 times", "10 times as much as", "10 x", "10x", "10"]
     q_str = f"Complete the sentence.\n\n**{left} is [_____] {right}.**"
     expl = f"{left} (ones) is 10 times greater than {right} (tenths)."
   else:
-    left = f"{val*0.01:.2f}"
-    right = f"{val*0.1:.1f}"
+    left, right = f"{val*0.01:.2f}", f"{val*0.1:.1f}"
     ans_text = "1/10 of"
     accepted = ["1/10 of", "1/10", "one-tenth of", "one tenth of", "0.1 of"]
     q_str = f"Complete the sentence.\n\n**{left} is [_____] {right}.**"
@@ -1230,7 +1618,7 @@ def gen_mh_multiplier_fill_sentence():
 
   return {
       "template_id": f"mh_mult_fill_{mode}",
-      "topic": "Unit 3: Place Value",
+      "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-2",
       "hint": (
           "Ask yourself: is the first number bigger (10 times) or smaller (1/10"
@@ -1249,16 +1637,13 @@ def gen_mh_multiplier_fill_sentence():
   }
 
 
-# --- Item 16: Fill-in Missing Terms of Expanded Form (Lesson 3-3) ---
 def gen_mh_expanded_form_missing_terms():
-  w = random.randint(3, 9)
-  t = random.randint(2, 7)
-  th = random.randint(3, 8)
+  w, t, th = random.randint(3, 9), random.randint(2, 7), random.randint(3, 8)
   num_str = f"{w}.{t}0{th}"
 
   return {
       "template_id": "mh_expanded_missing_terms",
-      "topic": "Unit 3: Place Value",
+      "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-3",
       "hint": (
           "Look at the place of each digit: tenths are multiplied by 1/10,"
@@ -1290,15 +1675,13 @@ def gen_mh_expanded_form_missing_terms():
   }
 
 
-# --- Item 17: Sum of fraction products to standard form (Lesson 3-3) ---
 def gen_mh_fraction_sum_to_standard():
-  h = random.choice([2, 3, 5, 7])
-  th = random.choice([4, 6, 8, 9])
+  h, th = random.choice([2, 3, 5, 7]), random.choice([4, 6, 8, 9])
   std_ans = f"0.0{h}{th}"
 
   return {
       "template_id": "mh_frac_sum_to_std",
-      "topic": "Unit 3: Place Value",
+      "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-3",
       "hint": (
           "Check which places are empty! If there are no tenths, place a 0 in"
@@ -1317,13 +1700,11 @@ def gen_mh_fraction_sum_to_standard():
   }
 
 
-# --- Item 18: Full Typed Word Form (Lesson 3-3) ---
 def gen_mh_full_typed_word_form():
   w = random.randint(22, 58)
   t = random.randint(1, 9)
   rem = random.randint(11, 35)
-  h = rem // 10
-  th = rem % 10
+  h, th = rem // 10, rem % 10
 
   w_str = number_to_word_2digit(w)
   dec_str = f"{ONES_WORDS[t]} hundred {number_to_word_2digit(rem)} thousandths"
@@ -1332,7 +1713,7 @@ def gen_mh_full_typed_word_form():
 
   return {
       "template_id": "mh_typed_word_form",
-      "topic": "Unit 3: Place Value",
+      "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-3",
       "hint": (
           "Write the whole number, write 'and' for the decimal point, then"
@@ -1343,10 +1724,7 @@ def gen_mh_full_typed_word_form():
       "scenario": "Lesson 3-3: Convert decimal numbers to words.",
       "question": f"Write **{num_str}** in **word form**:",
       "answer": correct_word,
-      "accepted_answers": [
-          correct_word,
-          correct_word.replace("-", " "),
-      ],
+      "accepted_answers": [correct_word, correct_word.replace("-", " ")],
       "explanation": (
           f"Read the whole number, use 'and' for decimal point, then read the"
           f" fractional part: **{correct_word}**."
@@ -1355,16 +1733,36 @@ def gen_mh_full_typed_word_form():
 
 
 # ==============================================================================
-# OTHER CURRICULUM CHAPTER GENERATORS
+# 7. UNITS 4 TO 7 GENERATORS
 # ==============================================================================
+def gen_add_sub_decimals():
+  d1 = round(random.uniform(14.25, 48.75), 2)
+  d2 = round(random.uniform(5.15, 18.50), 2)
+  mode = random.choice(["add", "sub"])
+  res = round(d1 + d2, 2) if mode == "add" else round(d1 - d2, 2)
+  q_str = f"{d1:.2f} + {d2:.2f}" if mode == "add" else f"{d1:.2f} - {d2:.2f}"
+  return {
+      "template_id": "u4_decimals_ops_typed",
+      "topic": "Unit 4: Add and Subtract Decimals",
+      "hint": (
+          "Line up the decimal points vertically before adding or subtracting."
+      ),
+      "input_type": "text",
+      "placeholder": "Enter decimal result",
+      "scenario": "Align decimal points vertically before adding or subtracting.",
+      "question": f"Calculate: **{q_str}**",
+      "answer": f"{res:.2f}",
+      "accepted_answers": [f"{res:.2f}", str(res)],
+      "explanation": f"Sum/Difference = **{res:.2f}**.",
+  }
 
 
 def gen_multiply_whole():
   n1, n2 = random.randint(120, 350), random.randint(12, 35)
   prod = n1 * n2
   return {
-      "template_id": "ch2_multiply_typed",
-      "topic": "Chapter 2: Multiply Whole Numbers",
+      "template_id": "u5_multiply_typed",
+      "topic": "Unit 5: Multiply Multi-Digit Whole Numbers",
       "hint": (
           "Multiply by the ones place first, then put a 0 placeholder before"
           " multiplying by the tens digit."
@@ -1383,6 +1781,33 @@ def gen_multiply_whole():
   }
 
 
+def gen_mult_div_decimals():
+  fa, fb = round(random.uniform(2.1, 8.4), 1), round(
+      random.uniform(0.3, 0.9), 1
+  )
+  prod = round(fa * fb, 2)
+  opts = helper_shuffle_options(
+      f"{prod:.2f}",
+      [f"{prod * 10:.2f}", f"{prod / 10:.2f}", f"{prod + 0.2:.2f}"],
+  )
+  return {
+      "template_id": "u6_mult_decimals",
+      "topic": "Unit 6: Multiply Decimals",
+      "hint": (
+          "Multiply as if whole numbers, then count total decimal places (1 +"
+          " 1 = 2) in the product."
+      ),
+      "input_type": "radio",
+      "options": opts,
+      "scenario": (
+          "Count total decimal places in factors to place decimal point."
+      ),
+      "question": f"Multiply: **{fa} × {fb}**",
+      "answer": f"{prod:.2f}",
+      "explanation": f"{fa} × {fb} = **{prod:.2f}**.",
+  }
+
+
 def gen_divide_one_digit():
   div, quot, rem = (
       random.randint(4, 9),
@@ -1392,8 +1817,8 @@ def gen_divide_one_digit():
   total = (quot * div) + rem
   correct = f"{quot} R{rem}"
   return {
-      "template_id": "ch3_divide_typed",
-      "topic": "Chapter 3: Divide by a One-Digit Divisor",
+      "template_id": "u7_divide_one_digit_typed",
+      "topic": "Unit 7: Divide Whole Numbers",
       "hint": "Divide step-by-step: Divide, Multiply, Subtract, Bring down.",
       "input_type": "text",
       "placeholder": "Format remainder as R (e.g., 12 R3)",
@@ -1414,8 +1839,8 @@ def gen_divide_two_digit():
   divisor, quotient = random.randint(15, 32), random.randint(18, 45)
   dividend = divisor * quotient
   return {
-      "template_id": "ch4_divide_two_digit_typed",
-      "topic": "Chapter 4: Divide by a Two-Digit Divisor",
+      "template_id": "u7_divide_two_digit_typed",
+      "topic": "Unit 7: Divide Whole Numbers",
       "hint": (
           "Estimate by rounding the divisor to the nearest ten to test"
           " quotient digits."
@@ -1432,245 +1857,26 @@ def gen_divide_two_digit():
   }
 
 
-def gen_add_sub_decimals():
-  d1, d2 = round(random.uniform(14.25, 48.75), 2), round(
-      random.uniform(5.15, 18.50), 2
-  )
-  mode = random.choice(["add", "sub"])
-  res = round(d1 + d2, 2) if mode == "add" else round(d1 - d2, 2)
-  q_str = f"{d1:.2f} + {d2:.2f}" if mode == "add" else f"{d1:.2f} - {d2:.2f}"
-  return {
-      "template_id": "ch5_decimals_ops_typed",
-      "topic": "Chapter 5: Add and Subtract Decimals",
-      "hint": (
-          "Line up the decimal points straight down before adding or"
-          " subtracting."
-      ),
-      "input_type": "text",
-      "placeholder": "Enter decimal result",
-      "scenario": "Align decimal points vertically before adding or subtracting.",
-      "question": f"Calculate: **{q_str}**",
-      "answer": f"{res:.2f}",
-      "accepted_answers": [f"{res:.2f}", str(res)],
-      "explanation": f"Sum/Difference = **{res:.2f}**.",
-  }
-
-
-def gen_mult_div_decimals():
-  fa, fb = round(random.uniform(2.1, 8.4), 1), round(
-      random.uniform(0.3, 0.9), 1
-  )
-  prod = round(fa * fb, 2)
-  opts = helper_shuffle_options(
-      f"{prod:.2f}",
-      [f"{prod * 10:.2f}", f"{prod / 10:.2f}", f"{prod + 0.2:.2f}"],
-  )
-  return {
-      "template_id": "ch6_mult_decimals",
-      "topic": "Chapter 6: Multiply and Divide Decimals",
-      "hint": (
-          "Multiply as if whole numbers, then count total decimal places (1 +"
-          " 1 = 2) in the product."
-      ),
-      "input_type": "radio",
-      "options": opts,
-      "scenario": (
-          "Count total decimal places in factors to place decimal point."
-      ),
-      "question": f"Multiply: **{fa} × {fb}**",
-      "answer": f"{prod:.2f}",
-      "explanation": f"{fa} × {fb} = **{prod:.2f}**.",
-  }
-
-
-def gen_expressions_patterns():
-  a, b, c = (
-      random.randint(3, 8),
-      random.randint(2, 6),
-      random.randint(3, 7),
-  )
-  val = (a + b) * c
-  return {
-      "template_id": "ch7_pemdas_typed",
-      "topic": "Chapter 7: Expressions and Patterns",
-      "hint": "Parentheses always come first in Order of Operations!",
-      "input_type": "text",
-      "placeholder": "Enter evaluated number",
-      "scenario": "Order of operations (PEMDAS).",
-      "question": f"Evaluate: **({a} + {b}) × {c}**",
-      "answer": str(val),
-      "accepted_answers": [str(val)],
-      "explanation": f"({a} + {b}) = {a+b}. {a+b} × {c} = **{val}**.",
-  }
-
-
-def gen_fractions_decimals():
-  pairs = [(1, 2, "0.5"), (1, 4, "0.25"), (3, 4, "0.75"), (1, 5, "0.2"), (2, 5, "0.4"), (3, 5, "0.6"), (4, 5, "0.8")]
-  num, den, dec = random.choice(pairs)
-  opts = helper_shuffle_options(
-      dec, [f"0.{num}{den}", f"0.{num*2}", f"{float(dec)+0.15:.2f}"]
-  )
-  return {
-      "template_id": "ch8_frac_to_dec",
-      "topic": "Chapter 8: Fractions and Decimals",
-      "hint": "Divide the numerator by the denominator, or think of tenths.",
-      "input_type": "radio",
-      "diagram": "fraction_bar",
-      "diagram_params": {"num": num, "den": den},
-      "scenario": "Convert fractions to equivalent decimals.",
-      "question": f"What is the decimal equivalent of **{num}/{den}**?",
-      "options": opts,
-      "answer": dec,
-      "explanation": f"{num}/{den} = **{dec}**.",
-  }
-
-
-def gen_add_sub_fractions():
-  opts = helper_shuffle_options("3/4", ["2/6", "1/4", "2/4"])
-  return {
-      "template_id": "ch9_unlike_fractions",
-      "topic": "Chapter 9: Add and Subtract Fractions",
-      "hint": "Find the least common denominator so the bottoms match.",
-      "input_type": "radio",
-      "options": opts,
-      "scenario": "Find common denominators before adding or subtracting.",
-      "question": "What is **1/2 + 1/4** in simplest form?",
-      "answer": "3/4",
-      "explanation": "2/4 + 1/4 = **3/4**.",
-  }
-
-
-def gen_mult_div_fractions():
-  whole, unit_den = random.randint(2, 6), random.choice([3, 4, 5])
-  res = whole * unit_den
-  return {
-      "template_id": "ch10_divide_unit_fractions_typed",
-      "topic": "Chapter 10: Multiply and Divide Fractions",
-      "hint": (
-          f"Dividing by 1/{unit_den} means multiplying the whole number by"
-          f" {unit_den}."
-      ),
-      "input_type": "text",
-      "placeholder": "Enter whole number",
-      "scenario": (
-          f"A carpenter has {whole} feet of wood cut into 1/{unit_den} foot"
-          " pieces."
-      ),
-      "question": f"How many pieces are made? (**{whole} ÷ 1/{unit_den}**)",
-      "answer": str(res),
-      "accepted_answers": [str(res), f"{res} pieces"],
-      "explanation": f"{whole} × {unit_den} = **{res}**.",
-  }
-
-
-def gen_measurement():
-  feet = random.randint(3, 9)
-  inches = feet * 12
-  return {
-      "template_id": "ch11_measurement_typed",
-      "topic": "Chapter 11: Measurement",
-      "hint": "1 foot has 12 inches, so multiply feet by 12.",
-      "input_type": "text",
-      "placeholder": "Enter number of inches",
-      "scenario": "1 foot = 12 inches.",
-      "question": f"Convert **{feet} feet** into **inches**:",
-      "answer": f"{inches} inches",
-      "accepted_answers": [str(inches), f"{inches} in", f"{inches} inches"],
-      "explanation": f"{feet} × 12 = **{inches} inches**.",
-  }
-
-
-def gen_geometry_compound_l():
-  l1, l2 = random.choice([4, 5, 6]), random.choice([4, 6, 8])
-  h1, h2, w = (
-      random.choice([10, 12, 14]),
-      random.choice([3, 4, 5]),
-      random.choice([3, 4, 5]),
-  )
-  v1, v2 = l1 * w * h1, l2 * w * h2
-  total_v = v1 + v2
-  return {
-      "template_id": "ch12_compound_l_typed",
-      "topic": "Chapter 12: Geometry",
-      "hint": (
-          "Split the shape into Box 1 and Box 2. Find length × width × height"
-          " for each, then add them!"
-      ),
-      "input_type": "text",
-      "placeholder": "Enter total cubic volume",
-      "scenario": (
-          "To find compound volume, split into non-overlapping rectangular"
-          " prisms."
-      ),
-      "diagram": "compound_l_prism",
-      "diagram_params": {"l1": l1, "h1": h1, "l2": l2, "h2": h2, "w": w},
-      "breakdown_diagram": "compound_l_breakdown",
-      "breakdown_details": {
-          "v1_calc": f"{l1} × {w} × {h1} = {v1} cu in",
-          "v2_calc": f"{l2} × {w} × {h2} = {v2} cu in",
-          "tot_calc": f"{v1} + {v2} = {total_v} cu in",
-      },
-      "question": (
-          "What is the total volume of the compound 3D solid shown in the"
-          " diagram (in cubic inches)?"
-      ),
-      "answer": f"{total_v} cu in",
-      "accepted_answers": [
-          str(total_v),
-          f"{total_v} cu in",
-          f"{total_v} cubic inches",
-      ],
-      "explanation": (
-          f"Prism 1: {v1} cu in | Prism 2: {v2} cu in | Total = **{total_v} cu"
-          " in**."
-      ),
-  }
-
-
-def gen_geometry_unit_cubes():
-  l1, l2 = random.choice([2, 3]), random.choice([2, 3])
-  h1, h2, w = (
-      random.choice([3, 4]),
-      random.choice([1, 2]),
-      random.choice([2, 3]),
-  )
-  v1, v2 = l1 * h1 * w, l2 * h2 * w
-  total_cubes = v1 + v2
-  return {
-      "template_id": "ch12_unit_cubes_typed",
-      "topic": "Chapter 12: Geometry",
-      "hint": "Count or calculate the blocks in each section, then add.",
-      "input_type": "text",
-      "placeholder": "Enter count of unit cubes",
-      "scenario": "Each cube represents 1 cubic unit.",
-      "diagram": "unit_cubes_compound",
-      "diagram_params": {"l1": l1, "h1": h1, "l2": l2, "h2": h2, "w": w},
-      "breakdown_diagram": "unit_cubes_breakdown",
-      "breakdown_details": {
-          "v1_calc": f"{l1} × {h1} × {w} = {v1} cubes",
-          "v2_calc": f"{l2} × {h2} × {w} = {v2} cubes",
-          "tot_calc": f"{v1} + {v2} = {total_cubes} cubic units",
-      },
-      "question": (
-          "How many 1-unit cubes make up this solid, and what is its total"
-          " volume?"
-      ),
-      "answer": f"{total_cubes} cubic units",
-      "accepted_answers": [
-          str(total_cubes),
-          f"{total_cubes} cubes",
-          f"{total_cubes} cubic units",
-      ],
-      "explanation": (
-          f"Left Section = {v1} | Right Section = {v2} | Total = **{total_cubes}"
-          " cubic units**."
-      ),
-  }
-
-
-# Master Generator Registry
+# ==============================================================================
+# 8. MASTER GENERATOR REGISTRY
+# ==============================================================================
 GENERATORS = [
-    # Unit 3: Place Value Review Suite
+    # Unit 2: Volume Review Suite (14 McGraw-Hill Benchmark Items)
+    gen_mh_u2_vocab_composite,
+    gen_mh_u2_vocab_volume,
+    gen_mh_u2_vocab_unit_cube,
+    gen_mh_u2_vocab_cubic_unit,
+    gen_mh_u2_vocab_formula,
+    gen_mh_u2_vocab_prism,
+    gen_mh_u2_target_volume_multiselect,
+    gen_mh_u2_partially_filled_prism,
+    gen_mh_u2_associative_property,
+    gen_mh_u2_pool_depth_problem,
+    gen_mh_u2_dimensions_multiselect,
+    gen_mh_u2_stepped_solid_volume,
+    gen_mh_u2_warehouse_problem,
+    gen_mh_u2_stacked_boxes_table,
+    # Unit 3: Place Value & Number Relationships
     gen_mh_compare_digits_two_numbers,
     gen_mh_word_to_standard_fill,
     gen_mh_multiselect_comparisons,
@@ -1682,19 +1888,15 @@ GENERATORS = [
     gen_mh_expanded_form_missing_terms,
     gen_mh_fraction_sum_to_standard,
     gen_mh_full_typed_word_form,
-    # Additional Chapters
+    # Unit 4: Add and Subtract Decimals
+    gen_add_sub_decimals,
+    # Unit 5: Multiply Multi-Digit Whole Numbers
     gen_multiply_whole,
+    # Unit 6: Multiply Decimals
+    gen_mult_div_decimals,
+    # Unit 7: Divide Whole Numbers
     gen_divide_one_digit,
     gen_divide_two_digit,
-    gen_add_sub_decimals,
-    gen_mult_div_decimals,
-    gen_expressions_patterns,
-    gen_fractions_decimals,
-    gen_add_sub_fractions,
-    gen_mult_div_fractions,
-    gen_measurement,
-    gen_geometry_compound_l,
-    gen_geometry_unit_cubes,
 ]
 
 TOPIC_TO_GENERATORS = {}
@@ -1706,7 +1908,7 @@ ALL_TOPICS = sorted(list(TOPIC_TO_GENERATORS.keys()))
 init_db()
 
 # ==============================================================================
-# 5. STREAMLIT APPLICATION UI
+# 9. STREAMLIT APPLICATION UI
 # ==============================================================================
 st.set_page_config(
     page_title="TN McGraw-Hill Math Prep", page_icon="📐", layout="wide"
@@ -1785,12 +1987,18 @@ with st.sidebar:
 
   st.markdown("---")
   selected_topics = st.multiselect(
-      "🎯 Focus Chapters:", ALL_TOPICS, default=["Unit 3: Place Value"]
+      "🎯 Focus Units:",
+      ALL_TOPICS,
+      default=[
+          "Unit 2: Volume"
+          if "Unit 2: Volume" in ALL_TOPICS
+          else ALL_TOPICS[0]
+      ],
   )
 
   st.markdown("---")
   if st.session_state.student:
-    st.header("📊 Chapter Mastery")
+    st.header("📊 Unit Mastery")
     for topic in selected_topics:
       score = st.session_state.mastery.get(topic, 0.0)
       st.write(f"**{topic}** ({int(score * 100)}%)")
@@ -1822,12 +2030,10 @@ def pick_next_question():
     cooling = [f for f in funcs if f.__name__ != last] or funcs
     st.session_state.recent_templates = []
 
-  # Adaptive Weighting: If she has lower mastery on a topic, weight that topic higher
   weights = []
   for f in cooling:
     dummy = f()
     score = st.session_state.mastery.get(dummy["topic"], 0.0)
-    # Inverse weight: lower mastery score gives higher selection probability
     weights.append(max(0.1, 1.0 - score))
 
   chosen_func = random.choices(cooling, weights=weights, k=1)[0]
@@ -1850,7 +2056,7 @@ if not st.session_state.student:
   st.stop()
 
 if not selected_topics:
-  st.warning("👈 Please select at least one chapter.")
+  st.warning("👈 Please select at least one unit.")
   st.stop()
 
 if (
@@ -1861,7 +2067,7 @@ if (
 
 q = st.session_state.current_q
 if q is None:
-  st.warning("No questions available for the selected chapter.")
+  st.warning("No questions available for the selected unit.")
   st.stop()
 
 # ==============================================================================
@@ -1882,7 +2088,7 @@ if current_topic_mastery < 0.40 and q["topic"] in MINI_LESSONS:
     st.warning(f"⚠️ **Watch Out for This Common Mistake:** {lesson_info['trap']}")
 
 lesson_badge = f" • *{q['lesson']}*" if "lesson" in q else ""
-st.caption(f"Chapter: **{q['topic']}**{lesson_badge}")
+st.caption(f"Curriculum Unit: **{q['topic']}**{lesson_badge}")
 st.info(f"**Context / Directions:**\n\n{q['scenario']}")
 
 if "table" in q:
@@ -1893,27 +2099,9 @@ if "diagram" in q:
   img_buffer = generate_diagram(q["diagram"], q.get("diagram_params", {}))
   st.image(img_buffer, width=540)
 
-# Scaffolding Hint Button (Allows learning before failing)
 if "hint" in q and not st.session_state.answered:
   with st.expander("💡 Need a Teacher Hint? Click here before answering!"):
     st.info(q["hint"])
-
-if "breakdown_diagram" in q:
-  with st.expander("💡 Click for Visual Breakdown & Strategy"):
-    st.markdown(
-        "**How to decompose (split) this compound shape into two regular"
-        " prisms:**"
-    )
-    breakdown_buf = generate_diagram(
-        q["breakdown_diagram"], q.get("diagram_params", {})
-    )
-    st.image(breakdown_buf, width=580)
-    bd = q.get("breakdown_details", {})
-    st.markdown(f"""
-        * **Prism 1 (Blue):** Length × Width × Height = `{bd.get('v1_calc', '')}`
-        * **Prism 2 (Green):** Length × Width × Height = `{bd.get('v2_calc', '')}`
-        * **Total Volume:** Add both volumes together: **`{bd.get('tot_calc', '')}`**
-        """)
 
 st.write(f"### {q['question']}")
 
@@ -1934,7 +2122,7 @@ with st.form(key=form_key):
     st.write("**Choose all that apply:**")
     selected_boxes = []
     for opt in q["options"]:
-      if st.checkbox(opt, key=f"chk_{opt}_{st.session_state.q_counter}"):
+      if st.checkbox(opt, key=f"chk_{opt}_{st.session_state.q_counter}``"):
         selected_boxes.append(opt)
     user_response = selected_boxes
 
@@ -2012,13 +2200,6 @@ if st.session_state.feedback:
     st.success(st.session_state.feedback["msg"])
   else:
     st.error(st.session_state.feedback["msg"])
-
-  if "breakdown_diagram" in q:
-    st.markdown("### 🧩 Step-by-Step Visual Decomposition:")
-    ans_breakdown_buf = generate_diagram(
-        q["breakdown_diagram"], q.get("diagram_params", {})
-    )
-    st.image(ans_breakdown_buf, width=600)
 
 if st.session_state.answered and st.button("Next Question ➡️"):
   pick_next_question()
