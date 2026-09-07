@@ -1,0 +1,15 @@
+# Virtual Environments
+.venv/
+venv/
+ENV/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Local SQLite Database (keeps her attempts local)
+math_tutor.db
+
+# IDE configurations
+.idea/
+.vscode/
