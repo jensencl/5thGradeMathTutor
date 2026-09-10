@@ -103,13 +103,17 @@ def get_or_create_student(name: str):
 
 def load_mastery(student_id: int, all_topics: list[str]) -> dict[str, float]:
   conn = get_db()
-  df = conn.query(
-      "SELECT topic, mastery FROM topic_mastery WHERE student_id = :sid",
-      params={"sid": student_id},
-  )
-  mastery = {row["topic"]: row["mastery"] for _, row in df.iterrows()}
-
+  mastery = {}
   with conn.session as s:
+    # Query existing mastery records for this student from Neon
+    result = s.execute(
+        text("SELECT topic, mastery FROM topic_mastery WHERE student_id = :sid"),
+        {"sid": student_id},
+    )
+    for row in result.fetchall():
+      mastery[row[0]] = float(row[1])
+
+    # Ensure any new topics added to the curriculum are initialized to 0.0
     for topic in all_topics:
       if topic not in mastery:
         mastery[topic] = 0.0
