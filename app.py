@@ -18,6 +18,7 @@ import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
+from sqlalchemy import text
 
 # ==============================================================================
 # 1. DATABASE SETUP & PERSISTENCE
