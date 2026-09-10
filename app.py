@@ -4,6 +4,8 @@
 #   "streamlit",
 #   "pandas",
 #   "matplotlib",
+#   "psycopg2-binary",
+#   "sqlalchemy",
 # ]
 # ///
 
@@ -13,7 +15,6 @@ import io
 import math
 import random
 import re
-import sqlite3
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -68,62 +69,75 @@ def init_db():
 
 
 def list_students():
-  with get_db() as conn:
-    cursor = conn.cursor()
-    cursor.execute("SELECT id, name FROM students ORDER BY name ASC")
-    return [dict(row) for row in cursor.fetchall()]
+  conn = get_db()
+  df = conn.query("SELECT id, name FROM students ORDER BY name ASC")
+  return df.to_dict(orient="records")
 
 
 def get_or_create_student(name: str):
   clean_name = name.strip().capitalize()
   if not clean_name:
     return None
-  with get_db() as conn:
-    cursor = conn.cursor()
-    cursor.execute("SELECT id, name FROM students WHERE name = ?", (clean_name,))
-    row = cursor.fetchone()
-    if row:
-      return dict(row)
-    cursor.execute("INSERT INTO students (name) VALUES (?)", (clean_name,))
-    conn.commit()
-    return {"id": cursor.lastrowid, "name": clean_name}
+  conn = get_db()
+  df = conn.query(
+      "SELECT id, name FROM students WHERE name = :name",
+      params={"name": clean_name},
+  )
+  if not df.empty:
+    return {"id": int(df.iloc[0]["id"]), "name": df.iloc[0]["name"]}
+
+  with conn.session as s:
+    result = s.execute(
+        text(
+            "INSERT INTO students (name) VALUES (:name) RETURNING id, name"
+        ),
+        {"name": clean_name},
+    )
+    row = result.fetchone()
+    s.commit()
+    return {"id": int(row[0]), "name": row[1]}
 
 
 def load_mastery(student_id: int, all_topics: list[str]) -> dict[str, float]:
-  with get_db() as conn:
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT topic, mastery FROM topic_mastery WHERE student_id = ?",
-        (student_id,),
-    )
-    mastery = {row["topic"]: row["mastery"] for row in cursor.fetchall()}
+  conn = get_db()
+  df = conn.query(
+      "SELECT topic, mastery FROM topic_mastery WHERE student_id = :sid",
+      params={"sid": student_id},
+  )
+  mastery = {row["topic"]: row["mastery"] for _, row in df.iterrows()}
+
+  with conn.session as s:
     for topic in all_topics:
       if topic not in mastery:
         mastery[topic] = 0.0
-        cursor.execute(
-            "INSERT INTO topic_mastery (student_id, topic, mastery) VALUES (?,"
-            " ?, 0.0)",
-            (student_id, topic),
+        s.execute(
+            text(
+                "INSERT INTO topic_mastery (student_id, topic, mastery) VALUES"
+                " (:sid, :top, 0.0) ON CONFLICT (student_id, topic) DO NOTHING"
+            ),
+            {"sid": student_id, "top": topic},
         )
-    conn.commit()
-    return mastery
+    s.commit()
+  return mastery
 
 
 def reset_student_progress(student_id: int, all_topics: list[str]):
-  with get_db() as conn:
-    cursor = conn.cursor()
-    cursor.execute(
-        "DELETE FROM attempt_logs WHERE student_id = ?", (student_id,)
+  conn = get_db()
+  with conn.session as s:
+    s.execute(
+        text("DELETE FROM attempt_logs WHERE student_id = :sid"),
+        {"sid": student_id},
     )
     for topic in all_topics:
-      cursor.execute(
-          """
-            INSERT INTO topic_mastery (student_id, topic, mastery) VALUES (?, ?, 0.0)
-            ON CONFLICT(student_id, topic) DO UPDATE SET mastery = 0.0
-            """,
-          (student_id, topic),
+      s.execute(
+          text(
+              "INSERT INTO topic_mastery (student_id, topic, mastery) VALUES"
+              " (:sid, :top, 0.0) ON CONFLICT (student_id, topic) DO UPDATE SET"
+              " mastery = 0.0"
+          ),
+          {"sid": student_id, "top": topic},
       )
-    conn.commit()
+    s.commit()
 
 
 def record_attempt(
@@ -134,29 +148,29 @@ def record_attempt(
     selected_answer: str,
     new_mastery: float,
 ):
-  with get_db() as conn:
-    cursor = conn.cursor()
-    cursor.execute(
-        """
-        INSERT INTO attempt_logs (student_id, topic, template_id, is_correct, selected_answer)
-        VALUES (?, ?, ?, ?, ?)
-        """,
-        (
-            student_id,
-            topic,
-            template_id,
-            1 if is_correct else 0,
-            selected_answer,
-        ),
+  conn = get_db()
+  with conn.session as s:
+    s.execute(
+        text("""
+            INSERT INTO attempt_logs (student_id, topic, template_id, is_correct, selected_answer)
+            VALUES (:sid, :top, :tid, :corr, :ans)
+        """),
+        {
+            "sid": student_id,
+            "top": topic,
+            "tid": template_id,
+            "corr": 1 if is_correct else 0,
+            "ans": selected_answer,
+        },
     )
-    cursor.execute(
-        """
-        INSERT INTO topic_mastery (student_id, topic, mastery) VALUES (?, ?, ?)
-        ON CONFLICT(student_id, topic) DO UPDATE SET mastery = excluded.mastery
-        """,
-        (student_id, topic, new_mastery),
+    s.execute(
+        text("""
+            INSERT INTO topic_mastery (student_id, topic, mastery) VALUES (:sid, :top, :mast)
+            ON CONFLICT (student_id, topic) DO UPDATE SET mastery = :mast
+        """),
+        {"sid": student_id, "top": topic, "mast": new_mastery},
     )
-    conn.commit()
+    s.commit()
 
 
 # ==============================================================================
@@ -1208,10 +1222,6 @@ def gen_mh_u2_stepped_solid_volume():
 
 
 def gen_mh_u2_warehouse_problem():
-  # Exact McGraw-Hill benchmark numbers from screenshot:
-  # Section A: 20 ft wide, 50 ft high, 25 ft deep -> Volume = 25,000 cu ft
-  # Section B: 30 ft wide, 25 ft high, 50 ft deep -> Volume = 37,500 cu ft
-  # Total Volume = 62,500 cu ft
   tot = 62500
   correct = f"{tot:,} cubic feet"
   distractors = ["37,500 cubic feet", "87,500 cubic feet", "50,000 cubic feet"]
@@ -2121,7 +2131,7 @@ with st.form(key=form_key):
     st.write("**Choose all that apply:**")
     selected_boxes = []
     for opt in q["options"]:
-      if st.checkbox(opt, key=f"chk_{opt}_{st.session_state.q_counter}``"):
+      if st.checkbox(opt, key=f"chk_{opt}_{st.session_state.q_counter}"):
         selected_boxes.append(opt)
     user_response = selected_boxes
 
