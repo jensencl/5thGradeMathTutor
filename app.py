@@ -31,41 +31,80 @@ def get_db():
 
 
 def init_db():
-  conn = get_db()
-  with conn.session as s:
-    s.execute(
-        text("""
-            CREATE TABLE IF NOT EXISTS students (
-                id SERIAL PRIMARY KEY,
-                name TEXT UNIQUE NOT NULL,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
-        """)
-    )
-    s.execute(
-        text("""
-            CREATE TABLE IF NOT EXISTS topic_mastery (
-                student_id INTEGER,
-                topic TEXT,
-                mastery REAL DEFAULT 0.0,
-                PRIMARY KEY (student_id, topic)
-            )
-        """)
-    )
-    s.execute(
-        text("""
-            CREATE TABLE IF NOT EXISTS attempt_logs (
-                id SERIAL PRIMARY KEY,
-                student_id INTEGER,
-                topic TEXT,
-                template_id TEXT,
-                is_correct INTEGER,
-                selected_answer TEXT,
-                timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-            )
-        """)
-    )
-    s.commit()
+  try:
+    conn = get_db()
+    with conn.session as s:
+      s.execute(
+          text("""
+              CREATE TABLE IF NOT EXISTS students (
+                  id SERIAL PRIMARY KEY,
+                  name TEXT UNIQUE NOT NULL,
+                  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+              )
+          """)
+      )
+      s.execute(
+          text("""
+              CREATE TABLE IF NOT EXISTS topic_mastery (
+                  student_id INTEGER,
+                  topic TEXT,
+                  mastery REAL DEFAULT 0.0,
+                  PRIMARY KEY (student_id, topic)
+              )
+          """)
+      )
+      s.execute(
+          text("""
+              CREATE TABLE IF NOT EXISTS attempt_logs (
+                  id SERIAL PRIMARY KEY,
+                  student_id INTEGER,
+                  topic TEXT,
+                  template_id TEXT,
+                  is_correct INTEGER,
+                  selected_answer TEXT,
+                  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+              )
+          """)
+      )
+      s.commit()
+  except Exception:
+    # Clear Streamlit's connection cache if the SSL socket drops, forcing a fresh reconnect
+    st.cache_resource.clear()
+    conn = get_db()
+    with conn.session as s:
+      s.execute(
+          text("""
+              CREATE TABLE IF NOT EXISTS students (
+                  id SERIAL PRIMARY KEY,
+                  name TEXT UNIQUE NOT NULL,
+                  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+              )
+          """)
+      )
+      s.execute(
+          text("""
+              CREATE TABLE IF NOT EXISTS topic_mastery (
+                  student_id INTEGER,
+                  topic TEXT,
+                  mastery REAL DEFAULT 0.0,
+                  PRIMARY KEY (student_id, topic)
+              )
+          """)
+      )
+      s.execute(
+          text("""
+              CREATE TABLE IF NOT EXISTS attempt_logs (
+                  id SERIAL PRIMARY KEY,
+                  student_id INTEGER,
+                  topic TEXT,
+                  template_id TEXT,
+                  is_correct INTEGER,
+                  selected_answer TEXT,
+                  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+              )
+          """)
+      )
+      s.commit()
 
 
 def list_students():
