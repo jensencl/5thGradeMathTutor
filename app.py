@@ -1426,56 +1426,69 @@ def gen_mh_u2_stacked_boxes_table():
 # 6. UNIT 3: PLACE VALUE & NUMBER RELATIONSHIPS GENERATORS
 # ==============================================================================
 def gen_mh_compare_digits_two_numbers():
-  d = random.choice([4, 6, 7, 8, 9])
-  num_a = random.randint(2, 5) * 100000 + d * 10000 + random.randint(100, 999)
-  num_b = random.randint(1, 4) * 100000 + d * 1000 + random.randint(100, 999)
+    d = random.choice([3, 4, 6, 7, 8, 9])
 
-  q_text = (
-      f"Which statement correctly compares values of the digit {d} in"
-      f" **{num_a:,}** and **{num_b:,}**?"
-  )
-  correct = (
-      f"The value of the digit {d} in {num_a:,} is 10 times the value of the"
-      f" digit {d} in {num_b:,}."
-  )
-  distractors = [
-      (
-          f"The value of the digit {d} in {num_a:,} is 1/10 the value of the"
-          f" digit {d} in {num_b:,}."
-      ),
-      (
-          f"The value of the digit {d} in {num_a:,} is 10,000 times the value"
-          f" of the digit {d} in {num_b:,}."
-      ),
-      (
-          f"The value of the digit {d} in {num_a:,} is 100 times the value of"
-          f" the digit {d} in {num_b:,}."
-      ),
-  ]
-  opts = helper_shuffle_options(correct, distractors)
-  return {
-      "template_id": "mh_compare_digits_two_numbers",
-      "topic": "Unit 3: Place Value and Number Relationships",
-      "lesson": "Lesson 3-1",
-      "hint": (
-          f"Compare the positions: Find which place {d} is in for each number,"
-          " and count how many steps separate them."
-      ),
-      "input_type": "radio",
-      "options": opts,
-      "scenario": (
-          "Lesson 3-1: Understanding relationships between digits in different"
-          " numbers."
-      ),
-      "question": q_text,
-      "answer": correct,
-      "explanation": (
-          f"In {num_a:,}, the {d} is in the ten-thousands place (value:"
-          f" {d*10000:,}). In {num_b:,}, the {d} is in the thousands place"
-          f" (value: {d*1000:,}). Since {d*10000:,} = 10 × {d*1000:,}, it is"
-          " **10 times the value**."
-      ),
-  }
+    # Define possible place value exponents (10^pos)
+    # 3: thousands (1,000), 4: ten-thousands (10,000), 5: hundred-thousands (100,000)
+    pos_a = random.choice([3, 4, 5])
+    pos_b = pos_a + random.choice([-2, -1, 1, 2])  # ensures a meaningful difference in scale
+    pos_b = max(1, min(5, pos_b))  # keep within safe bounds
+
+    if pos_a == pos_b:
+        pos_b = pos_a - 1
+
+    # Construct numbers ensuring the digit d is placed at those specific powers of 10
+    multiplier_a = 10 ** pos_a
+    multiplier_b = 10 ** pos_b
+
+    # Build random numbers containing digit d at the chosen positions
+    base_other_a = random.randint(10, 99) * (multiplier_a // 10)
+    num_a = base_other_a + d * multiplier_a + random.randint(10, 99)
+
+    base_other_b = random.randint(10, 99) * (multiplier_b // 10)
+    num_b = base_other_b + d * multiplier_b + random.randint(10, 99)
+
+    val_a = d * multiplier_a
+    val_b = d * multiplier_b
+
+    if val_a > val_b:
+        ratio = val_a // val_b
+        if ratio >= 10:
+            correct = f"The value of the digit {d} in {num_a:,} is {ratio:,} times the value of the digit {d} in {num_b:,}."
+        else:
+            correct = f"The value of the digit {d} in {num_a:,} is 10 times the value of the digit {d} in {num_b:,}."
+        distractors = [
+            f"The value of the digit {d} in {num_a:,} is 1/{ratio if ratio >= 10 else 10} the value of the digit {d} in {num_b:,}.",
+            f"The value of the digit {d} in {num_a:,} is 100 times the value of the digit {d} in {num_b:,}.",
+            f"The value of the digit {d} in {num_a:,} is equal to the value of the digit {d} in {num_b:,}."
+        ]
+    else:
+        ratio = val_b // val_a
+        if ratio >= 10:
+            correct = f"The value of the digit {d} in {num_a:,} is 1/{ratio:,} the value of the digit {d} in {num_b:,}."
+        else:
+            correct = f"The value of the digit {d} in {num_a:,} is 1/10 the value of the digit {d} in {num_b:,}."
+        distractors = [
+            f"The value of the digit {d} in {num_a:,} is {ratio if ratio >= 10 else 10} times the value of the digit {d} in {num_b:,}.",
+            f"The value of the digit {d} in {num_a:,} is 100 times the value of the digit {d} in {num_b:,}.",
+            f"The value of the digit {d} in {num_a:,} is equal to the value of the digit {d} in {num_b:,}."
+        ]
+
+    q_text = f"Which statement correctly compares values of the digit {d} in **{num_a:,}** and **{num_b:,}**?"
+    opts = helper_shuffle_options(correct, distractors)
+
+    return {
+        "template_id": "mh_compare_digits_two_numbers_dyn",
+        "topic": "Unit 3: Place Value and Number Relationships",
+        "lesson": "Lesson 3-1",
+        "hint": f"Identify the place value of the digit {d} in both numbers to find how many powers of 10 separate them.",
+        "input_type": "radio",
+        "options": opts,
+        "scenario": "Lesson 3-1: Understanding relationships between digits in different numbers.",
+        "question": q_text,
+        "answer": correct,
+        "explanation": f"In {num_a:,}, the digit {d} has a value of {val_a:,}. In {num_b:,}, it has a value of {val_b:,}. Therefore, **{correct}**.",
+    }
 
 
 def gen_mh_word_to_standard_fill():
