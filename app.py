@@ -2119,11 +2119,11 @@ with st.sidebar:
 
   st.markdown("---")
   if st.session_state.student:
-    st.header("📊 Unit Mastery")
-    for topic in selected_topics:
-      score = st.session_state.mastery.get(topic, 0.0)
-      st.write(f"**{topic}** ({int(score * 100)}%)")
-      st.progress(score)
+      st.header("📊 Unit Mastery Dashboard")
+      for topic in ALL_TOPICS:
+          score = st.session_state.mastery.get(topic, 0.0)
+          st.write(f"**{topic}** ({int(score * 100)}%)")
+          st.progress(score)
 
 
 # --- Question Dispatcher with Adaptive Teaching Prioritization ---
