@@ -870,6 +870,112 @@ def check_user_answer(user_input, q: dict) -> bool:
 
 
 # ==============================================================================
+# DYNAMIC STORY GENERATOR
+# ==============================================================================
+def gen_universal_dynamic_story():
+    # 1. Procedural Story Personalization (Randomized names and contexts)
+    name = random.choice(["Charli", "Emma", "Sophia", "Olivia", "Your daughter"])
+
+    # Pick a random topic to target from your main math units
+    topic_choice = random.choice([
+        "Unit 2: Volume",
+        "Unit 4: Add and Subtract Decimals",
+        "Unit 5: Multiply Multi-Digit Whole Numbers",
+        "Unit 6: Multiply Decimals"
+    ])
+
+    # 2. Generate numbers and answers specific to the chosen topic
+    if topic_choice == "Unit 2: Volume":
+        l = random.randint(3, 8)
+        w = random.randint(2, 5)
+        h = random.randint(2, 6)
+        correct = l * w * h
+        correct_str = f"{correct} cubic units"
+
+        distractors = [
+            f"{correct + l} cubic units",
+            f"{l + w + h} cubic units",
+            f"{correct - (l * w)} cubic units"
+        ]
+
+        scenario = (
+            f"**{name}** is building a custom rectangular storage container with a length of "
+            f"**{l}** units, a width of **{w}** units, and a height of **{h}** units."
+        )
+        question = "What is the total volume of the storage container?"
+        explanation = f"Multiply length × width × height: {l} × {w} × {h} = **{correct} cubic units**."
+
+    elif topic_choice == "Unit 4: Add and Subtract Decimals":
+        d1 = round(random.uniform(15.50, 45.20), 2)
+        d2 = round(random.uniform(3.10, 12.80), 2)
+        is_addition = random.choice([True, False])
+
+        if is_addition:
+            correct = round(d1 + d2, 2)
+            scenario = f"**{name}** went to the store and bought supplies worth **${d1:.2f}**, plus snacks for **${d2:.2f}**."
+            question = "What was the total cost before tax?"
+            explanation = f"Add the two amounts vertically, aligning the decimal points: {d1:.2f} + {d2:.2f} = **${correct:.2f}**."
+        else:
+            correct = round(d1 - d2, 2)
+            scenario = f"**{name}** started a savings jar with **${d1:.2f}** and spent **${d2:.2f}** on craft materials."
+            question = "How much money is left in the jar?"
+            explanation = f"Subtract the amounts, aligning the decimal points: {d1:.2f} - {d2:.2f} = **${correct:.2f}**."
+
+        correct_str = f"${correct:.2f}"
+        distractors = [
+            f"${correct + 1.15:.2f}",
+            f"${abs(correct - 2.50):.2f}",
+            f"${correct + 5.00:.2f}"
+        ]
+
+    elif topic_choice == "Unit 6: Multiply Decimals":
+        fa = round(random.uniform(2.1, 7.5), 1)
+        fb = round(random.uniform(1.2, 4.3), 1)
+        correct = round(fa * fb, 2)
+        correct_str = f"{correct:.2f}"
+
+        distractors = [
+            f"{correct + 1.25:.2f}",
+            f"{round(correct * 10, 2):.2f}",
+            f"{abs(correct - 0.85):.2f}"
+        ]
+
+        scenario = f"**{name}** is buying fabric. She needs **{fa}** yards of material, and each yard costs **${fb}**."
+        question = "What is the total cost of the fabric?"
+        explanation = f"Multiply the decimals and count the total decimal places: {fa} × {fb} = **${correct:.2f}**."
+
+    else:  # Unit 5: Multiply Multi-Digit Whole Numbers
+        n1 = random.randint(15, 35)
+        n2 = random.randint(12, 40)
+        correct = n1 * n2
+        correct_str = f"{correct:,}"
+
+        distractors = [
+            f"{correct + n1:,}",
+            f"{correct - n2:,}",
+            f"{n1 + n2:,}"
+        ]
+
+        scenario = f"**{name}** is arranging **{n2}** packs of stickers. Each pack contains **{n1}** stickers."
+        question = "What is the total number of stickers?"
+        explanation = f"Multiply containers by items per container: {n2} × {n1} = **{correct:,}**."
+
+    opts = helper_shuffle_options(correct_str, distractors)
+
+    return {
+        "template_id": "dyn_universal_story",
+        "topic": topic_choice,
+        "lesson": "Application & Word Problems",
+        "input_type": "radio",
+        "options": opts,
+        "scenario": scenario,
+        "question": question,
+        "answer": correct_str,
+        "explanation": explanation,
+    }
+
+
+# ==============================================================================
 # 5. UNIT 2: VOLUME GENERATORS
 # ==============================================================================
 def gen_mh_u2_vocab_composite():
@@ -1982,6 +2088,8 @@ def gen_divide_two_digit():
 # 8. MASTER GENERATOR REGISTRY
 # ==============================================================================
 GENERATORS = [
+    #Dynamic Story Generator
+    gen_dynamic_story_multiplication,
     # Unit 2: Volume Review Suite (14 McGraw-Hill Benchmark Items)
     gen_mh_u2_vocab_composite,
     gen_mh_u2_vocab_volume,
