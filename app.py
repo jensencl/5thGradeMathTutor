@@ -2089,7 +2089,7 @@ def gen_divide_two_digit():
 # ==============================================================================
 GENERATORS = [
     #Dynamic Story Generator
-    gen_dynamic_story_multiplication,
+    gen_universal_dynamic_story,
     # Unit 2: Volume Review Suite (14 McGraw-Hill Benchmark Items)
     gen_mh_u2_vocab_composite,
     gen_mh_u2_vocab_volume,
