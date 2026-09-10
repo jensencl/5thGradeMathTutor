@@ -1399,40 +1399,92 @@ def gen_mh_word_to_standard_fill():
   }
 
 
+# def gen_mh_multiselect_comparisons():
+#   true_pairs = [
+#       ("0.49 < 0.5", True),
+#       ("0.019 < 0.09", True),
+#       ("0.28 < 0.3", True),
+#       ("0.075 < 0.7", True),
+#       ("0.304 > 0.333", False),
+#       ("0.08 > 0.81", False),
+#       ("0.111 < 0.11", False),
+#       ("0.68 = 0.068", False),
+#   ]
+#   sample = random.sample(true_pairs, 6)
+#   opts = [p[0] for p in sample]
+#   correct_opts = [p[0] for p in sample if p[1]]
+#
+#   return {
+#       "template_id": "mh_multiselect_comparisons",
+#       "topic": "Unit 3: Place Value and Number Relationships",
+#       "lesson": "Lesson 3-4",
+#       "hint": (
+#           "Line up the decimal points and compare digits from left to right"
+#           " (tenths, then hundredths, then thousandths)."
+#       ),
+#       "input_type": "multiselect",
+#       "options": opts,
+#       "correct_answers": correct_opts,
+#       "scenario": (
+#           "Lesson 3-4: Choose all that apply. Determine which decimal"
+#           " comparisons are true."
+#       ),
+#       "question": "Which comparisons are *true*?",
+#       "explanation": (
+#           "Compare decimals place by place (tenths, then hundredths, then"
+#           f" thousandths). Correct statements: {', '.join(correct_opts)}."
+#       ),
+#   }
+
+
 def gen_mh_multiselect_comparisons():
-  true_pairs = [
-      ("0.49 < 0.5", True),
-      ("0.019 < 0.09", True),
-      ("0.28 < 0.3", True),
-      ("0.075 < 0.7", True),
-      ("0.304 > 0.333", False),
-      ("0.08 > 0.81", False),
-      ("0.111 < 0.11", False),
-      ("0.68 = 0.068", False),
-  ]
-  sample = random.sample(true_pairs, 6)
-  opts = [p[0] for p in sample]
-  correct_opts = [p[0] for p in sample if p[1]]
+  # Generate 6 unique random decimal pairs dynamically
+  pairs = []
+  for _ in range(6):
+    a = round(random.randint(1, 95) / 100, 3)
+    b = round(a + random.choice([-0.05, -0.02, 0.02, 0.05, 0.1]), 3)
+    b = max(0.01, min(0.99, b))  # Keep within safe bounds
+
+    if a == b:
+      b = round(a + 0.01, 3)
+
+    if a < b:
+      pairs.append((f"{a} < {b}", True))
+      pairs.append((f"{a} > {b}", False))
+    else:
+      pairs.append((f"{a} > {b}", True))
+      pairs.append((f"{a} < {b}", False))
+
+  # Select a random subset of 4 to 6 statements
+  selected_sample = random.sample(pairs, 4)
+  opts = [p[0] for p in selected_sample]
+  correct_opts = [p[0] for p in selected_sample if p[1]]
+
+  # Ensure at least one correct option exists
+  if not correct_opts:
+    selected_sample[0] = (selected_sample[0][0], True)
+    opts = [p[0] for p in selected_sample]
+    correct_opts = [p[0] for p in selected_sample if p[1]]
 
   return {
-      "template_id": "mh_multiselect_comparisons",
+      "template_id": "mh_multiselect_comparisons_dyn",
       "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-4",
       "hint": (
-          "Line up the decimal points and compare digits from left to right"
-          " (tenths, then hundredths, then thousandths)."
+          "Compare decimals place by place from left to right (tenths, then"
+          " hundredths)."
       ),
       "input_type": "multiselect",
       "options": opts,
       "correct_answers": correct_opts,
       "scenario": (
-          "Lesson 3-4: Choose all that apply. Determine which decimal"
-          " comparisons are true."
+          "Lesson 3-4: Choose all that apply. Determine which randomly"
+          " generated decimal comparisons are true."
       ),
       "question": "Which comparisons are *true*?",
       "explanation": (
-          "Compare decimals place by place (tenths, then hundredths, then"
-          f" thousandths). Correct statements: {', '.join(correct_opts)}."
+          "Evaluate each inequality place by place. Correct statements:"
+          f" {', '.join(correct_opts)}."
       ),
   }
 
@@ -1486,11 +1538,64 @@ def gen_mh_dual_rounding_fill():
   }
 
 
+# def gen_mh_multiselect_rounding():
+#   base = round(random.choice([3.2, 5.4, 8.1, 9.3]), 1)
+#   c1 = round(base - 0.03 + random.uniform(0.001, 0.004), 3)
+#   c2 = round(base + 0.02 + random.uniform(0.001, 0.004), 3)
+#   c3 = round(base + 0.03, 2)
+#   w1 = round(base - 0.11, 2)
+#   w2 = round(base + 0.062, 3)
+#   w3 = round(base - 0.088, 3)
+#
+#   options_pool = [
+#       (f"{c1:.3f}", True),
+#       (f"{c2:.3f}", True),
+#       (f"{c3:.2f}", True),
+#       (f"{w1:.2f}", False),
+#       (f"{w2:.3f}", False),
+#       (f"{w3:.3f}", False),
+#   ]
+#   random.shuffle(options_pool)
+#
+#   opts = [p[0] for p in options_pool]
+#   correct_opts = [p[0] for p in options_pool if p[1]]
+#
+#   return {
+#       "template_id": "mh_multiselect_rounding",
+#       "topic": "Unit 3: Place Value and Number Relationships",
+#       "lesson": "Lesson 3-5",
+#       "hint": (
+#           "Test each option individually: Look at its hundredths place digit to"
+#           " see if it rounds up or down."
+#       ),
+#       "input_type": "multiselect",
+#       "options": opts,
+#       "correct_answers": correct_opts,
+#       "scenario": (
+#           "Lesson 3-5: Choose all that apply. Identify numbers that round to a"
+#           " specified tenth."
+#       ),
+#       "question": (
+#           f"Which numbers round to **{base}** when rounded to the nearest"
+#           " tenth?"
+#       ),
+#       "explanation": (
+#           f"Numbers from {base-0.05} to {base+0.049} round to {base}. Correct"
+#           f" choices: {', '.join(correct_opts)}."
+#       ),
+#   }
+
+
 def gen_mh_multiselect_rounding():
-  base = round(random.choice([3.2, 5.4, 8.1, 9.3]), 1)
-  c1 = round(base - 0.03 + random.uniform(0.001, 0.004), 3)
-  c2 = round(base + 0.02 + random.uniform(0.001, 0.004), 3)
+  # Pick a random base tenth dynamically (e.g., 2.3, 6.8, etc.)
+  base = round(random.randint(20, 95) / 10, 1)
+
+  # Procedurally generate numbers that DO round to base
+  c1 = round(base - 0.03 + random.uniform(0.001, 0.003), 3)
+  c2 = round(base + 0.02 + random.uniform(0.001, 0.003), 3)
   c3 = round(base + 0.03, 2)
+
+  # Procedurally generate numbers that DO NOT round to base
   w1 = round(base - 0.11, 2)
   w2 = round(base + 0.062, 3)
   w3 = round(base - 0.088, 3)
@@ -1509,27 +1614,27 @@ def gen_mh_multiselect_rounding():
   correct_opts = [p[0] for p in options_pool if p[1]]
 
   return {
-      "template_id": "mh_multiselect_rounding",
+      "template_id": "mh_multiselect_rounding_dyn",
       "topic": "Unit 3: Place Value and Number Relationships",
       "lesson": "Lesson 3-5",
       "hint": (
-          "Test each option individually: Look at its hundredths place digit to"
-          " see if it rounds up or down."
+          "Look at the hundredths place digit of each number to see if it rounds"
+          f" up or stays at {base}."
       ),
       "input_type": "multiselect",
       "options": opts,
       "correct_answers": correct_opts,
       "scenario": (
           "Lesson 3-5: Choose all that apply. Identify numbers that round to a"
-          " specified tenth."
+          " dynamically generated target tenth."
       ),
       "question": (
           f"Which numbers round to **{base}** when rounded to the nearest"
           " tenth?"
       ),
       "explanation": (
-          f"Numbers from {base-0.05} to {base+0.049} round to {base}. Correct"
-          f" choices: {', '.join(correct_opts)}."
+          f"Numbers between {base-0.05} and {base+0.049} round to {base}."
+          f" Correct choices: {', '.join(correct_opts)}."
       ),
   }
 
