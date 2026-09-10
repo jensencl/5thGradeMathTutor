@@ -21,26 +21,28 @@ import streamlit as st
 from sqlalchemy import text
 
 # ==============================================================================
-# 1. DATABASE SETUP & PERSISTENCE
+# 1. DATABASE SETUP & PERSISTENCE (NEON POSTGRESQL)
 # ==============================================================================
-DB_FILE = "math_tutor.db"
 
 
-# Initialize connection to Neon Postgres via st.connection
 def get_db():
-    return st.connection("neon", type="sql")
+  return st.connection("neon", type="sql")
+
 
 def init_db():
-    conn = get_db()
-    with conn.session as s:
-        s.execute("""
+  conn = get_db()
+  with conn.session as s:
+    s.execute(
+        text("""
             CREATE TABLE IF NOT EXISTS students (
                 id SERIAL PRIMARY KEY,
                 name TEXT UNIQUE NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
-        s.execute("""
+    )
+    s.execute(
+        text("""
             CREATE TABLE IF NOT EXISTS topic_mastery (
                 student_id INTEGER,
                 topic TEXT,
@@ -48,7 +50,9 @@ def init_db():
                 PRIMARY KEY (student_id, topic)
             )
         """)
-        s.execute("""
+    )
+    s.execute(
+        text("""
             CREATE TABLE IF NOT EXISTS attempt_logs (
                 id SERIAL PRIMARY KEY,
                 student_id INTEGER,
@@ -59,7 +63,8 @@ def init_db():
                 timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
-        s.commit()
+    )
+    s.commit()
 
 
 def list_students():
