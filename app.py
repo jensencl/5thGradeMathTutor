@@ -2170,7 +2170,7 @@ def pick_next_question():
 
 
 # --- Main UI Area ---
-st.title("📐 McGraw-Hill 5th Grade Math Prep")
+st.title("📐 5th Grade Math Tutor")
 
 if not st.session_state.student:
   st.info("👈 Select or create a student profile to begin.")
@@ -2282,9 +2282,9 @@ with st.form(key=form_key):
       is_correct = check_user_answer(user_response, q)
       curr_score = st.session_state.mastery.get(q["topic"], 0.0)
       new_score = (
-          min(1.0, curr_score + 0.15)
+          min(1.0, curr_score + random.uniform(0.04, 0.08))
           if is_correct
-          else max(0.0, curr_score - 0.20)
+          else max(0.0, curr_score - random.uniform(0.05, 0.10))
       )
 
       correct_ans_display = q.get("answer", "")
