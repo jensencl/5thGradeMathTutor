@@ -1580,12 +1580,11 @@ def gen_mh_word_to_standard_fill():
 
 
 def gen_mh_multiselect_comparisons():
-    # Generate 6 unique random decimal pairs dynamically
     pairs = []
     for _ in range(6):
         a = round(random.randint(1, 95) / 100, 3)
         b = round(a + random.choice([-0.05, -0.02, 0.02, 0.05, 0.1]), 3)
-        b = max(0.01, min(0.99, b))  # Keep within safe bounds
+        b = max(0.01, min(0.99, b))
 
         if a == b:
             b = round(a + 0.01, 3)
@@ -1597,14 +1596,23 @@ def gen_mh_multiselect_comparisons():
             pairs.append((f"{a} > {b}", True))
             pairs.append((f"{a} < {b}", False))
 
-    # Select a random subset of 4 to 6 statements
     selected_sample = random.sample(pairs, 4)
     opts = [p[0] for p in selected_sample]
     correct_opts = [p[0] for p in selected_sample if p[1]]
 
-    # Ensure at least one correct option exists
+    # Ensure at least one correct option exists (and correctly re-derive opts/correct_opts)
     if not correct_opts:
-        selected_sample[0] = (selected_sample[0][0], True)
+        # Force the first item to be true
+        item_text = selected_sample[0][0]
+        # Flip the inequality or force a true statement
+        parts = item_text.split()
+        if len(parts) == 3:
+            val1, _, val2 = parts
+            fixed_text = f"{val1} < {val2}" if float(val1) < float(val2) else f"{val1} > {val2}"
+            selected_sample[0] = (fixed_text, True)
+        else:
+            selected_sample[0] = (selected_sample[0][0], True)
+
         opts = [p[0] for p in selected_sample]
         correct_opts = [p[0] for p in selected_sample if p[1]]
 
