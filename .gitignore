@@ -17,3 +17,6 @@ math_tutor.db
 # Streamlit Local Secrets (Protects database credentials)
 .streamlit/
 .streamlit/secrets.toml
+
+# GitHub
+GitHubToken.txt
