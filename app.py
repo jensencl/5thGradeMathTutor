@@ -879,6 +879,7 @@ def gen_universal_dynamic_story():
     # Pick a random topic to target from your main math units
     topic_choice = random.choice([
         "Unit 2: Volume",
+        "Unit 3: Place Value and Number Relationships"
         "Unit 4: Add and Subtract Decimals",
         "Unit 5: Multiply Multi-Digit Whole Numbers",
         "Unit 6: Multiply Decimals"
