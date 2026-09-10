@@ -1365,66 +1365,80 @@ def gen_mh_u2_warehouse_problem():
 
 
 def gen_mh_u2_stacked_boxes_table():
-  tot_vol = 270
-  va = 90
-  vb = 180
-  ha = 5
-  hb = 5
-  return {
-      "template_id": "mh_u2_stacked_boxes_table",
-      "topic": "Unit 2: Volume",
-      "lesson": "Lesson 2-4",
-      "hint": (
-          "Since Box B is twice the volume of Box A, divide the total 270 into"
-          " 3 equal parts (1 part for A, 2 parts for B). Then find the missing"
-          " height using Volume ÷ (Length × Width)."
-      ),
-      "input_type": "multi_text",
-      "diagram": "stacked_ratio_boxes",
-      "diagram_params": {"la": 3, "wa": 6, "lb": 6, "wb": 6},
-      "scenario": (
-          f"The combined volume of the two boxes shown is {tot_vol} cubic"
-          " inches. Box A and Box B have the same height and the same 6-inch"
-          " depth. Box B has twice the volume of Box A."
-      ),
-      "question": "Determine the height and volume of each box.",
-      "blank_fields": [
-          {
-              "key": "ha",
-              "label": "Box A Height (in.):",
-              "placeholder": "Enter height in inches (e.g., 8)",
-          },
-          {
-              "key": "va",
-              "label": "Box A Volume (cubic in.):",
-              "placeholder": "Enter volume in cu in (e.g., 120)",
-          },
-          {
-              "key": "hb",
-              "label": "Box B Height (in.):",
-              "placeholder": "Enter height in inches (e.g., 4)",
-          },
-          {
-              "key": "vb",
-              "label": "Box B Volume (cubic in.):",
-              "placeholder": "Enter volume in cu in (e.g., 240)",
-          },
-      ],
-      "accepted_answers_dict": {
-          "ha": [str(ha)],
-          "va": [str(va)],
-          "hb": [str(hb)],
-          "vb": [str(vb)],
-      },
-      "explanation": (
-          f"1. **Divide Volume by Ratios:** Box A is 1 part, Box B is 2 parts (3"
-          f" total parts).\n   * Box A Volume = {tot_vol} ÷ 3 = **{va} cu in**\n"
-          f"   * Box B Volume = {va} × 2 = **{vb} cu in**\n2. **Find Height:**\n"
-          f"   * Box B Base Area = 6 in. × 6 in. = 36 sq in.\n   * Height = {vb}"
-          f" ÷ 36 = **{hb} in.**\n   * Since both boxes share the same height,"
-          f" Box A Height is also **{ha} in.**"
-      ),
-  }
+    # Choose clean, kid-friendly dimensions for Box A and Box B
+    la = random.choice([2, 3, 4])  # Box A length
+    wa = random.choice([4, 6])  # Box A/B depth (shared)
+    wb = wa  # Shared depth
+
+    # Box B length is slightly wider than Box A
+    lb = la + random.choice([2, 3, 4])
+
+    # Shared height for both boxes, keeping numbers easy (e.g., 3 to 7)
+    h_shared = random.randint(3, 7)
+
+    # Calculate volumes dynamically based on dimensions
+    va = la * wa * h_shared
+    vb = lb * wb * h_shared
+    tot_vol = va + vb
+
+    return {
+        "template_id": "mh_u2_stacked_boxes_table_dyn",
+        "topic": "Unit 2: Volume",
+        "lesson": "Lesson 2-4",
+        "hint": (
+            f"Box B's base area is ({lb} × {wb}), and Box A's base area is ({la} × {wa}). "
+            f"Since they share the same height ({h_shared} in.), find the total base area "
+            f"to solve for the volumes!"
+        ),
+        "input_type": "multi_text",
+        "diagram": "stacked_ratio_boxes",
+        "diagram_params": {"la": la, "wa": wa, "lb": lb, "wb": wb},
+        "scenario": (
+            f"The combined volume of the two boxes shown is **{tot_vol:,}** cubic "
+            f"inches. Box A has a top length of {la} in. and Box B has a bottom length "
+            f"of {lb} in. Both boxes share a depth of {wb} in. and the **same height**."
+        ),
+        "question": "Determine the height and volume of each box.",
+        "blank_fields": [
+            {
+                "key": "ha",
+                "label": "Box A Height (in.):",
+                "placeholder": "Enter height in inches (e.g., 5)",
+            },
+            {
+                "key": "va",
+                "label": "Box A Volume (cubic in.):",
+                "placeholder": "Enter volume in cu in",
+            },
+            {
+                "key": "hb",
+                "label": "Box B Height (in.):",
+                "placeholder": "Enter height in inches (e.g., 5)",
+            },
+            {
+                "key": "vb",
+                "label": "Box B Volume (cubic in.):",
+                "placeholder": "Enter volume in cu in",
+            },
+        ],
+        "accepted_answers_dict": {
+            "ha": [str(h_shared)],
+            "va": [str(va)],
+            "hb": [str(h_shared)],
+            "vb": [str(vb)],
+        },
+        "explanation": (
+            f"1. **Find Base Areas:**\n"
+            f"   * Box A Base Area = {la} × {wa} = {la * wa} sq in.\n"
+            f"   * Box B Base Area = {lb} × {wb} = {lb * wb} sq in.\n"
+            f"   * Total Base Area = {(la * wa) + (lb * wb)} sq in.\n"
+            f"2. **Find Height:**\n"
+            f"   * Height = Total Volume ({tot_vol}) ÷ Total Base Area = **{h_shared} in.**\n"
+            f"3. **Find Volumes:**\n"
+            f"   * Box A Volume = {la * wa} × {h_shared} = **{va} cu in**\n"
+            f"   * Box B Volume = {lb * wb} × {h_shared} = **{vb} cu in**"
+        ),
+    }
 
 
 # ==============================================================================
