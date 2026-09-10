@@ -873,10 +873,8 @@ def check_user_answer(user_input, q: dict) -> bool:
 # DYNAMIC STORY GENERATOR
 # ==============================================================================
 def gen_universal_dynamic_story():
-    # 1. Procedural Story Personalization (Randomized names and contexts)
     name = random.choice(["Charli", "Emma", "Sophia", "Olivia", "Your daughter"])
 
-    # Pick a random topic to target from your main math units
     topic_choice = random.choice([
         "Unit 2: Volume",
         "Unit 3: Place Value and Number Relationships",
@@ -885,7 +883,6 @@ def gen_universal_dynamic_story():
         "Unit 6: Multiply Decimals"
     ])
 
-    # 2. Generate numbers and answers specific to the chosen topic
     if topic_choice == "Unit 2: Volume":
         l = random.randint(3, 8)
         w = random.randint(2, 5)
@@ -905,6 +902,14 @@ def gen_universal_dynamic_story():
         )
         question = "What is the total volume of the storage container?"
         explanation = f"Multiply length × width × height: {l} × {w} × {h} = **{correct} cubic units**."
+
+    elif topic_choice == "Unit 3: Place Value and Number Relationships":
+        val = random.choice([3, 5, 7, 8])
+        correct_str = "10 times"
+        scenario = f"**{name}** was comparing place values on her math homework and noticed that **{val}** is placed in the ones column."
+        question = f"How many times greater is the value of **{val}** in the ones place compared to **{val*0.1:.1f}** in the tenths place?"
+        distractors = ["1/10 of", "100 times", "1/100 of"]
+        explanation = f"Each step to the left on the place value chart is 10 times greater. Therefore, **{val} is 10 times {val*0.1:.1f}**."
 
     elif topic_choice == "Unit 4: Add and Subtract Decimals":
         d1 = round(random.uniform(15.50, 45.20), 2)
@@ -945,7 +950,7 @@ def gen_universal_dynamic_story():
         question = "What is the total cost of the fabric?"
         explanation = f"Multiply the decimals and count the total decimal places: {fa} × {fb} = **${correct:.2f}**."
 
-    else:  # Unit 5: Multiply Multi-Digit Whole Numbers
+    else:
         n1 = random.randint(15, 35)
         n2 = random.randint(12, 40)
         correct = n1 * n2
@@ -1428,28 +1433,22 @@ def gen_mh_u2_stacked_boxes_table():
 def gen_mh_compare_digits_two_numbers():
     d = random.choice([3, 4, 6, 7, 8, 9])
 
-    # Define possible place value exponents (10^pos)
-    # 3: thousands (1,000), 4: ten-thousands (10,000), 5: hundred-thousands (100,000)
-    pos_a = random.choice([3, 4, 5])
-    pos_b = pos_a + random.choice([-2, -1, 1, 2])  # ensures a meaningful difference in scale
-    pos_b = max(1, min(5, pos_b))  # keep within safe bounds
+    # Randomly choose different place value tiers for comparison
+    pos_a = random.choice([2, 3, 4, 5])
+    pos_b = pos_a + random.choice([-2, -1, 1, 2])
+    pos_b = max(0, min(5, pos_b))
 
     if pos_a == pos_b:
-        pos_b = pos_a - 1
+        pos_b = max(0, pos_a - 1)
 
-    # Construct numbers ensuring the digit d is placed at those specific powers of 10
-    multiplier_a = 10 ** pos_a
-    multiplier_b = 10 ** pos_b
+    mult_a = 10 ** pos_a
+    mult_b = 10 ** pos_b
 
-    # Build random numbers containing digit d at the chosen positions
-    base_other_a = random.randint(10, 99) * (multiplier_a // 10)
-    num_a = base_other_a + d * multiplier_a + random.randint(10, 99)
+    num_a = random.randint(10, 89) * (mult_a if mult_a > 1 else 10) + d * mult_a + random.randint(1, 9)
+    num_b = random.randint(10, 89) * (mult_b if mult_b > 1 else 10) + d * mult_b + random.randint(1, 9)
 
-    base_other_b = random.randint(10, 99) * (multiplier_b // 10)
-    num_b = base_other_b + d * multiplier_b + random.randint(10, 99)
-
-    val_a = d * multiplier_a
-    val_b = d * multiplier_b
+    val_a = d * mult_a
+    val_b = d * mult_b
 
     if val_a > val_b:
         ratio = val_a // val_b
