@@ -13,3 +13,6 @@ math_tutor.db
 # IDE configurations
 .idea/
 .vscode/
+
+# Streamlit Local Secrets (Protects database credentials)
+.streamlit/

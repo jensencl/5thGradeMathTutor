@@ -25,47 +25,40 @@ import streamlit as st
 DB_FILE = "math_tutor.db"
 
 
+# Initialize connection to Neon Postgres via st.connection
 def get_db():
-  conn = sqlite3.connect(DB_FILE)
-  conn.row_factory = sqlite3.Row
-  return conn
-
+    return st.connection("neon", type="sql")
 
 def init_db():
-  with get_db() as conn:
-    cursor = conn.cursor()
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS students (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT UNIQUE NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
+    conn = get_db()
+    with conn.session as s:
+        s.execute("""
+            CREATE TABLE IF NOT EXISTS students (
+                id SERIAL PRIMARY KEY,
+                name TEXT UNIQUE NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
         """)
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS topic_mastery (
-            student_id INTEGER,
-            topic TEXT,
-            mastery REAL DEFAULT 0.0,
-            PRIMARY KEY (student_id, topic),
-            FOREIGN KEY (student_id) REFERENCES students (id)
-        )
+        s.execute("""
+            CREATE TABLE IF NOT EXISTS topic_mastery (
+                student_id INTEGER,
+                topic TEXT,
+                mastery REAL DEFAULT 0.0,
+                PRIMARY KEY (student_id, topic)
+            )
         """)
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS attempt_logs (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            student_id INTEGER,
-            topic TEXT,
-            template_id TEXT,
-            is_correct INTEGER,
-            selected_answer TEXT,
-            timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (student_id) REFERENCES students (id)
-        )
+        s.execute("""
+            CREATE TABLE IF NOT EXISTS attempt_logs (
+                id SERIAL PRIMARY KEY,
+                student_id INTEGER,
+                topic TEXT,
+                template_id TEXT,
+                is_correct INTEGER,
+                selected_answer TEXT,
+                timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
         """)
-    cursor.execute("PRAGMA table_info(attempt_logs)")
-    if "template_id" not in [row["name"] for row in cursor.fetchall()]:
-      cursor.execute("ALTER TABLE attempt_logs ADD COLUMN template_id TEXT")
-    conn.commit()
+        s.commit()
 
 
 def list_students():
