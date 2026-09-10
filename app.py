@@ -70,8 +70,10 @@ def init_db():
 
 def list_students():
   conn = get_db()
-  df = conn.query("SELECT id, name FROM students ORDER BY name ASC")
-  return df.to_dict(orient="records")
+  with conn.session as s:
+      result = s.execute(text("SELECT id, name FROM students ORDER BY name ASC"))
+      rows = result.fetchall()
+      return [{"id": row[0], "name": row[1]} for row in rows]
 
 
 def get_or_create_student(name: str):
@@ -79,23 +81,24 @@ def get_or_create_student(name: str):
   if not clean_name:
     return None
   conn = get_db()
-  df = conn.query(
-      "SELECT id, name FROM students WHERE name = :name",
-      params={"name": clean_name},
-  )
-  if not df.empty:
-    return {"id": int(df.iloc[0]["id"]), "name": df.iloc[0]["name"]}
-
   with conn.session as s:
     result = s.execute(
+        text("SELECT id, name FROM students WHERE name = :name"),
+        {"name": clean_name},
+    )
+    row = result.fetchone()
+    if row:
+      return {"id": int(row[0]), "name": row[1]}
+
+    insert_result = s.execute(
         text(
             "INSERT INTO students (name) VALUES (:name) RETURNING id, name"
         ),
         {"name": clean_name},
     )
-    row = result.fetchone()
+    new_row = insert_result.fetchone()
     s.commit()
-    return {"id": int(row[0]), "name": row[1]}
+    return {"id": int(new_row[0]), "name": new_row[1]}
 
 
 def load_mastery(student_id: int, all_topics: list[str]) -> dict[str, float]:
